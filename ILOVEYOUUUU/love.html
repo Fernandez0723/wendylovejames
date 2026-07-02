@@ -21,6 +21,7 @@
             padding: 20px;
             overflow-x: hidden;
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text y="20" font-size="20">❤️</text></svg>') 12 12, auto;
+            position: relative;
         }
 
         ::-webkit-scrollbar {
@@ -1056,7 +1057,7 @@
             100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.5); }
         }
 
-        /* ---- SECRET KISS EFFECT ---- */
+        /* ---- KISS EFFECT ---- */
         .kiss-effect {
             position: fixed;
             pointer-events: none;
@@ -1069,6 +1070,135 @@
             30% { transform: scale(1.5) rotate(10deg); }
             60% { transform: scale(1) rotate(-5deg); }
             100% { opacity: 0; transform: scale(1.8) rotate(0deg); }
+        }
+
+        /* ---- I LOVE YOU WENDY SPECIAL ANIMATION ---- */
+        .iloveyou-container {
+            position: fixed;
+            inset: 0;
+            z-index: 99998;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .iloveyou-container.active {
+            opacity: 1;
+            pointer-events: none;
+        }
+        .iloveyou-text {
+            font-size: clamp(3rem, 12vw, 8rem);
+            font-weight: 900;
+            text-align: center;
+            animation: iloveyouPulse 2s ease-in-out infinite;
+            text-shadow: 0 0 80px rgba(255,107,157,0.5), 0 0 160px rgba(255,215,0,0.3);
+            letter-spacing: 8px;
+            position: relative;
+        }
+        .iloveyou-text .heart-icon {
+            display: inline-block;
+            animation: heartBeat 1s ease-in-out infinite;
+        }
+        .iloveyou-text .wendy-name {
+            display: inline-block;
+            animation: wendyFloat 3s ease-in-out infinite;
+        }
+        @keyframes iloveyouPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        @keyframes wendyFloat {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+        .iloveyou-sub {
+            font-size: clamp(1rem, 3vw, 2rem);
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            margin-top: 10px;
+            letter-spacing: 6px;
+            animation: subFade 3s ease-in-out infinite;
+        }
+        @keyframes subFade {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        .iloveyou-sparkles {
+            position: absolute;
+            font-size: 2rem;
+            animation: sparkleOrbit 4s ease-in-out infinite;
+        }
+        @keyframes sparkleOrbit {
+            0% { transform: rotate(0deg) translateX(150px) rotate(0deg); opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { transform: rotate(360deg) translateX(150px) rotate(-360deg); opacity: 0; }
+        }
+
+        /* ---- PRELOADER ---- */
+        .preloader {
+            position: fixed;
+            inset: 0;
+            background: #0b0a0f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999999;
+            flex-direction: column;
+            gap: 20px;
+            transition: all 0.8s ease;
+        }
+        .preloader.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .preloader .loader-heart {
+            font-size: 4rem;
+            animation: heartBeat 0.8s ease-in-out infinite;
+        }
+        .preloader .loader-text {
+            color: rgba(255,255,255,0.3);
+            font-size: 1rem;
+            letter-spacing: 4px;
+            animation: pulseText 1.5s ease-in-out infinite;
+        }
+        @keyframes pulseText {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        .preloader .loader-bar {
+            width: 200px;
+            height: 3px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .preloader .loader-bar .fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff6b9d, #ffd700);
+            animation: loadFill 2s ease-out forwards;
+        }
+        @keyframes loadFill {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        /* ---- SECRET EASTER EGG ---- */
+        .easter-egg {
+            position: fixed;
+            z-index: 99999;
+            pointer-events: none;
+            font-size: 3rem;
+            animation: easterFloat 6s ease-out forwards;
+        }
+        @keyframes easterFloat {
+            0% { opacity: 0; transform: translateY(100px) scale(0.5) rotate(-10deg); }
+            20% { opacity: 1; transform: translateY(-20px) scale(1.2) rotate(5deg); }
+            80% { opacity: 1; transform: translateY(-80px) scale(1) rotate(-3deg); }
+            100% { opacity: 0; transform: translateY(-150px) scale(0.8) rotate(0deg); }
         }
 
         /* ---- RESPONSIVE ---- */
@@ -1150,6 +1280,10 @@
                 font-size: 0.7rem;
                 padding: 4px 12px;
             }
+            .iloveyou-text {
+                font-size: clamp(2rem, 10vw, 4rem);
+                letter-spacing: 4px;
+            }
         }
 
         @media (max-width: 400px) {
@@ -1169,55 +1303,6 @@
         #bgMusic {
             display: none;
         }
-
-        /* ---- PRELOADER ---- */
-        .preloader {
-            position: fixed;
-            inset: 0;
-            background: #0b0a0f;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 999999;
-            flex-direction: column;
-            gap: 20px;
-            transition: all 0.8s ease;
-        }
-        .preloader.hide {
-            opacity: 0;
-            pointer-events: none;
-        }
-        .preloader .loader-heart {
-            font-size: 4rem;
-            animation: heartBeat 0.8s ease-in-out infinite;
-        }
-        .preloader .loader-text {
-            color: rgba(255,255,255,0.3);
-            font-size: 1rem;
-            letter-spacing: 4px;
-            animation: pulseText 1.5s ease-in-out infinite;
-        }
-        @keyframes pulseText {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.8; }
-        }
-        .preloader .loader-bar {
-            width: 200px;
-            height: 3px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .preloader .loader-bar .fill {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #ff6b9d, #ffd700);
-            animation: loadFill 2s ease-out forwards;
-        }
-        @keyframes loadFill {
-            0% { width: 0%; }
-            100% { width: 100%; }
-        }
     </style>
 </head>
 <body>
@@ -1227,6 +1312,25 @@
         <div class="loader-heart">💕</div>
         <div class="loader-text">Loading Our Love Story...</div>
         <div class="loader-bar"><div class="fill"></div></div>
+    </div>
+
+    <!-- I LOVE YOU WENDY OVERLAY -->
+    <div class="iloveyou-container" id="iloveyouContainer">
+        <div style="position:relative;display:flex;flex-direction:column;align-items:center;">
+            <div class="iloveyou-text rainbow-text">
+                <span class="heart-icon">💕</span> 
+                <span>I LOVE YOU</span> 
+                <span class="wendy-name" style="background:linear-gradient(135deg,#ff6b9d,#ffd700,#ff6b9d);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:300% 300%;animation:gradientShift 3s ease-in-out infinite;">WENDY</span>
+                <span class="heart-icon">💕</span>
+            </div>
+            <div class="iloveyou-sub">💖 You are my everything, my love, my world 💖</div>
+            <div style="margin-top:20px;font-size:clamp(2rem,5vw,3rem);animation:heartBeat 1.2s ease-in-out infinite;">💞</div>
+            <!-- Sparkles around -->
+            <span class="iloveyou-sparkles" style="top:-50px;right:-50px;animation-delay:0s;">✨</span>
+            <span class="iloveyou-sparkles" style="bottom:-50px;left:-50px;animation-delay:1s;">🌟</span>
+            <span class="iloveyou-sparkles" style="top:-50px;left:-50px;animation-delay:2s;">💫</span>
+            <span class="iloveyou-sparkles" style="bottom:-50px;right:-50px;animation-delay:3s;">⭐</span>
+        </div>
     </div>
 
     <div class="presentation">
@@ -1560,6 +1664,7 @@
                 <button class="surprise-btn" id="surpriseBtn">💥 Surprise!</button>
                 <button class="surprise-btn" id="loveNoteBtn" style="background:linear-gradient(135deg,#a7d0ff,#7bed9f);box-shadow:0 4px 24px rgba(167,208,255,0.3);">💌 Love Note</button>
                 <button class="surprise-btn" id="kissBtn" style="background:linear-gradient(135deg,#ff9ff3,#ff6b9d);box-shadow:0 4px 24px rgba(255,107,157,0.3);">💋 Kiss</button>
+                <button class="surprise-btn" id="iloveyouBtn" style="background:linear-gradient(135deg,#ffd700,#ff6b9d);box-shadow:0 4px 24px rgba(255,215,0,0.3);">💕 I Love You</button>
             </div>
             <div class="footer-text">
                 Made with <strong>❤️</strong> for <strong>Wendy</strong> from <strong>Zshenawer</strong>
@@ -1694,13 +1799,13 @@
         (function createHearts() {
             const container = document.getElementById('heartsBg');
             const hearts = ['❤️', '💕', '💖', '💗', '💝', '✨', '🌟', '💫', '💞', '💘', '🌸', '💝'];
-            for (let i = 0; i < 40; i++) {
+            for (let i = 0; i < 45; i++) {
                 const el = document.createElement('span');
                 el.className = 'heart-float';
                 el.textContent = hearts[i % hearts.length];
                 el.style.left = Math.random() * 100 + '%';
-                el.style.fontSize = (12 + Math.random() * 26) + 'px';
-                el.style.animationDuration = (10 + Math.random() * 22) + 's';
+                el.style.fontSize = (12 + Math.random() * 28) + 'px';
+                el.style.animationDuration = (10 + Math.random() * 24) + 's';
                 el.style.animationDelay = (Math.random() * 15) + 's';
                 el.style.opacity = 0.05 + Math.random() * 0.12;
                 container.appendChild(el);
@@ -1710,15 +1815,15 @@
         // ---- SPARKLES ----
         (function createSparkles() {
             const container = document.getElementById('sparkleContainer');
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 55; i++) {
                 const spark = document.createElement('div');
                 spark.className = 'sparkle';
                 spark.style.left = Math.random() * 100 + '%';
                 spark.style.width = (3 + Math.random() * 8) + 'px';
                 spark.style.height = spark.style.width;
-                spark.style.animationDuration = (6 + Math.random() * 16) + 's';
+                spark.style.animationDuration = (6 + Math.random() * 18) + 's';
                 spark.style.animationDelay = (Math.random() * 15) + 's';
-                spark.style.background = `radial-gradient(circle, ${['#ffd700','#ff6b9d','#ffb3d9','#a7d0ff','#ffdf8c','#7bed9f','#ff9ff3','#ff4757'][Math.floor(Math.random()*8)]}, transparent)`;
+                spark.style.background = `radial-gradient(circle, ${['#ffd700','#ff6b9d','#ffb3d9','#a7d0ff','#ffdf8c','#7bed9f','#ff9ff3','#ff4757','#2ed573'][Math.floor(Math.random()*9)]}, transparent)`;
                 container.appendChild(spark);
             }
         })();
@@ -1731,13 +1836,13 @@
             trailTimeout = setTimeout(() => {
                 const trail = document.createElement('div');
                 trail.className = 'sparkle-trail';
-                const emojis = ['❤️', '💕', '✨', '💖', '💗', '🌟', '💫'];
+                const emojis = ['❤️', '💕', '✨', '💖', '💗', '🌟', '💫', '💞', '💘'];
                 trail.textContent = emojis[Math.floor(Math.random() * emojis.length)];
                 trail.style.left = e.clientX + 'px';
                 trail.style.top = e.clientY + 'px';
-                trail.style.fontSize = (10 + Math.random() * 20) + 'px';
+                trail.style.fontSize = (10 + Math.random() * 22) + 'px';
                 const angle = Math.random() * 2 * Math.PI;
-                const dist = 30 + Math.random() * 60;
+                const dist = 30 + Math.random() * 70;
                 trail.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
                 trail.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
                 document.body.appendChild(trail);
@@ -1912,33 +2017,109 @@
             }
         });
 
+        // ---- I LOVE YOU WENDY BUTTON ----
+        document.getElementById('iloveyouBtn').addEventListener('click', function(e) {
+            const container = document.getElementById('iloveyouContainer');
+            container.classList.add('active');
+            
+            // Confetti explosion
+            const colors = ['#ff6b9d', '#ffd700', '#ffb3d9', '#a7d0ff', '#ffdf8c', '#ff7eb3', '#7bed9f', '#ff9ff3', '#ff4757'];
+            const emojis = ['❤️', '💕', '💖', '✨', '🌟', '💫', '💞', '💘', '💗', '🌸', '🌹', '💋', '💍'];
+            
+            for (let i = 0; i < 200; i++) {
+                const piece = document.createElement('div');
+                piece.className = 'confetti-piece';
+                const x = window.innerWidth / 2 + (Math.random() - 0.5) * 600;
+                const y = window.innerHeight / 2 + (Math.random() - 0.5) * 500;
+                piece.style.left = x + 'px';
+                piece.style.top = y + 'px';
+                piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+                piece.style.width = (6 + Math.random() * 20) + 'px';
+                piece.style.height = (6 + Math.random() * 20) + 'px';
+                piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+                const angle = Math.random() * 2 * Math.PI;
+                const dist = 100 + Math.random() * 800;
+                piece.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+                piece.style.setProperty('--ty', Math.sin(angle) * dist - 600 + 'px');
+                piece.style.animationDuration = (1.5 + Math.random() * 2.5) + 's';
+                piece.style.animationDelay = (Math.random() * 0.5) + 's';
+                
+                if (i % 3 === 0) {
+                    piece.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    piece.style.background = 'transparent';
+                    piece.style.fontSize = (20 + Math.random() * 40) + 'px';
+                    piece.style.width = 'auto';
+                    piece.style.height = 'auto';
+                    piece.style.display = 'flex';
+                    piece.style.alignItems = 'center';
+                    piece.style.justifyContent = 'center';
+                }
+                
+                document.body.appendChild(piece);
+                setTimeout(() => { if (piece.parentNode) piece.remove(); }, 4500);
+            }
+            
+            // Floating hearts everywhere
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.style.cssText = `
+                        position: fixed;
+                        left: ${Math.random() * window.innerWidth}px;
+                        top: ${Math.random() * window.innerHeight}px;
+                        font-size: ${20 + Math.random() * 50}px;
+                        z-index: 99997;
+                        pointer-events: none;
+                        animation: easterFloat ${2 + Math.random() * 3}s ease-out forwards;
+                        opacity: 0;
+                    `;
+                    heart.textContent = ['❤️', '💕', '💖', '💗', '💝', '💞', '💘'][Math.floor(Math.random() * 7)];
+                    document.body.appendChild(heart);
+                    setTimeout(() => { if (heart.parentNode) heart.remove(); }, 5000);
+                }, i * 50);
+            }
+            
+            // Hide after 5 seconds
+            setTimeout(() => {
+                container.classList.remove('active');
+            }, 5000);
+            
+            const btn = e.currentTarget;
+            btn.textContent = '💕 I LOVE YOU! 💕';
+            btn.style.transform = 'scale(1.15)';
+            setTimeout(() => {
+                btn.textContent = '💕 I Love You';
+                btn.style.transform = 'scale(1)';
+            }, 1500);
+        });
+
         // ---- SURPRISE BUTTON ----
         document.getElementById('surpriseBtn').addEventListener('click', function(e) {
             const colors = ['#ff6b9d', '#ffd700', '#ffb3d9', '#a7d0ff', '#ffdf8c', '#ff7eb3', '#7bed9f', '#ff9ff3', '#ff4757', '#2ed573', '#ff6348', '#70a1ff'];
             const emojis = ['❤️', '💕', '💖', '✨', '🌟', '💫', '🎉', '🎊', '💝', '💗', '🌹', '💋', '💍', '🥂', '💞', '💘', '🌸', '🌈', '⭐', '💥', '💐'];
 
-            for (let i = 0; i < 300; i++) {
+            for (let i = 0; i < 350; i++) {
                 const piece = document.createElement('div');
                 piece.className = 'confetti-piece';
-                const x = window.innerWidth / 2 + (Math.random() - 0.5) * 800;
-                const y = window.innerHeight / 2 + (Math.random() - 0.5) * 700;
+                const x = window.innerWidth / 2 + (Math.random() - 0.5) * 900;
+                const y = window.innerHeight / 2 + (Math.random() - 0.5) * 800;
                 piece.style.left = x + 'px';
                 piece.style.top = y + 'px';
                 piece.style.background = colors[Math.floor(Math.random() * colors.length)];
-                piece.style.width = (6 + Math.random() * 25) + 'px';
-                piece.style.height = (6 + Math.random() * 25) + 'px';
+                piece.style.width = (6 + Math.random() * 28) + 'px';
+                piece.style.height = (6 + Math.random() * 28) + 'px';
                 piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
                 const angle = Math.random() * 2 * Math.PI;
-                const dist = 150 + Math.random() * 900;
+                const dist = 150 + Math.random() * 1000;
                 piece.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
-                piece.style.setProperty('--ty', Math.sin(angle) * dist - 700 + 'px');
-                piece.style.animationDuration = (1.2 + Math.random() * 3) + 's';
+                piece.style.setProperty('--ty', Math.sin(angle) * dist - 800 + 'px');
+                piece.style.animationDuration = (1.2 + Math.random() * 3.2) + 's';
                 piece.style.animationDelay = (Math.random() * 0.8) + 's';
 
                 if (i % 2 === 0) {
                     piece.textContent = emojis[Math.floor(Math.random() * emojis.length)];
                     piece.style.background = 'transparent';
-                    piece.style.fontSize = (18 + Math.random() * 40) + 'px';
+                    piece.style.fontSize = (18 + Math.random() * 44) + 'px';
                     piece.style.width = 'auto';
                     piece.style.height = 'auto';
                     piece.style.display = 'flex';
@@ -1949,7 +2130,7 @@
                 document.body.appendChild(piece);
                 setTimeout(() => {
                     if (piece.parentNode) piece.remove();
-                }, 4500);
+                }, 4800);
             }
 
             const bigHeart = document.createElement('div');
@@ -1958,11 +2139,11 @@
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%) scale(0);
-                font-size: 25rem;
+                font-size: 30rem;
                 z-index: 99998;
                 pointer-events: none;
-                animation: bigHeartPop 2.5s ease-out forwards;
-                filter: drop-shadow(0 0 120px rgba(255,107,157,0.6));
+                animation: bigHeartPop 3s ease-out forwards;
+                filter: drop-shadow(0 0 150px rgba(255,107,157,0.6));
             `;
             bigHeart.textContent = '💖';
             document.body.appendChild(bigHeart);
@@ -1970,11 +2151,11 @@
             const style = document.createElement('style');
             style.textContent = `
                 @keyframes bigHeartPop {
-                    0% { transform: translate(-50%, -50%) scale(0) rotate(-30deg); opacity: 0; }
-                    25% { transform: translate(-50%, -50%) scale(2) rotate(15deg); opacity: 1; }
-                    50% { transform: translate(-50%, -50%) scale(1.3) rotate(-8deg); opacity: 1; }
-                    75% { transform: translate(-50%, -50%) scale(1.7) rotate(5deg); opacity: 1; }
-                    100% { transform: translate(-50%, -50%) scale(2.2) rotate(0deg); opacity: 0; }
+                    0% { transform: translate(-50%, -50%) scale(0) rotate(-40deg); opacity: 0; }
+                    25% { transform: translate(-50%, -50%) scale(2.2) rotate(20deg); opacity: 1; }
+                    50% { transform: translate(-50%, -50%) scale(1.4) rotate(-10deg); opacity: 1; }
+                    75% { transform: translate(-50%, -50%) scale(1.8) rotate(8deg); opacity: 1; }
+                    100% { transform: translate(-50%, -50%) scale(2.5) rotate(0deg); opacity: 0; }
                 }
             `;
             document.head.appendChild(style);
@@ -1982,41 +2163,13 @@
             setTimeout(() => {
                 if (bigHeart.parentNode) bigHeart.remove();
                 if (style.parentNode) style.remove();
-            }, 3000);
+            }, 3200);
 
-            const loveText = document.createElement('div');
-            loveText.style.cssText = `
-                position: fixed;
-                top: 15%;
-                left: 50%;
-                transform: translateX(-50%);
-                font-size: clamp(2rem, 8vw, 5rem);
-                font-weight: 900;
-                z-index: 99998;
-                pointer-events: none;
-                animation: loveTextFloat 3.5s ease-out forwards;
-                text-shadow: 0 0 80px rgba(255,107,157,0.4);
-                letter-spacing: 4px;
-            `;
-            loveText.className = 'rainbow-text';
-            loveText.textContent = '💕 I LOVE YOU WENDY! 💕';
-            document.body.appendChild(loveText);
-            
-            const loveStyle = document.createElement('style');
-            loveStyle.textContent = `
-                @keyframes loveTextFloat {
-                    0% { opacity: 0; transform: translateX(-50%) scale(0.5) rotate(-5deg); }
-                    20% { opacity: 1; transform: translateX(-50%) scale(1.2) rotate(3deg); }
-                    40% { transform: translateX(-50%) scale(1) rotate(-2deg); }
-                    80% { opacity: 1; transform: translateX(-50%) scale(1.1) rotate(0deg); }
-                    100% { opacity: 0; transform: translateX(-50%) scale(1.3) rotate(0deg); }
-                }
-            `;
-            document.head.appendChild(loveStyle);
-            
+            // Show I LOVE YOU WENDY overlay
+            const container = document.getElementById('iloveyouContainer');
+            container.classList.add('active');
             setTimeout(() => {
-                if (loveText.parentNode) loveText.remove();
-                if (loveStyle.parentNode) loveStyle.remove();
+                container.classList.remove('active');
             }, 4000);
 
             const btn = e.currentTarget;
@@ -2050,7 +2203,10 @@
                 "💫 You are the star that guides me home.",
                 "🌹 My love for you grows stronger every day.",
                 "💕 You are my everything, my world, my love.",
-                "✨ Every moment with you is a beautiful memory."
+                "✨ Every moment with you is a beautiful memory.",
+                "💞 You and me, forever and always, baby.",
+                "🌟 You are the reason I believe in love.",
+                "💗 My heart belongs to you, now and always."
             ];
             
             const note = notes[Math.floor(Math.random() * notes.length)];
@@ -2077,16 +2233,16 @@
         document.getElementById('kissBtn').addEventListener('click', function(e) {
             const kissEmojis = ['💋', '💏', '💕', '❤️', '💖', '💗', '💝', '💞', '💘'];
             
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 60; i++) {
                 const kiss = document.createElement('div');
                 kiss.className = 'kiss-effect';
                 kiss.textContent = kissEmojis[Math.floor(Math.random() * kissEmojis.length)];
                 kiss.style.left = (Math.random() * window.innerWidth) + 'px';
                 kiss.style.top = (Math.random() * window.innerHeight) + 'px';
-                kiss.style.fontSize = (20 + Math.random() * 60) + 'px';
-                kiss.style.animationDuration = (1 + Math.random() * 1.5) + 's';
+                kiss.style.fontSize = (20 + Math.random() * 70) + 'px';
+                kiss.style.animationDuration = (1 + Math.random() * 1.8) + 's';
                 document.body.appendChild(kiss);
-                setTimeout(() => { if (kiss.parentNode) kiss.remove(); }, 2000);
+                setTimeout(() => { if (kiss.parentNode) kiss.remove(); }, 2200);
             }
 
             const bigKiss = document.createElement('div');
@@ -2095,11 +2251,11 @@
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                font-size: 10rem;
+                font-size: 12rem;
                 z-index: 99998;
                 pointer-events: none;
-                animation: bigKissPop 2s ease-out forwards;
-                filter: drop-shadow(0 0 80px rgba(255,107,157,0.4));
+                animation: bigKissPop 2.5s ease-out forwards;
+                filter: drop-shadow(0 0 100px rgba(255,107,157,0.4));
             `;
             bigKiss.textContent = '💋';
             document.body.appendChild(bigKiss);
@@ -2107,10 +2263,10 @@
             const kissStyle = document.createElement('style');
             kissStyle.textContent = `
                 @keyframes bigKissPop {
-                    0% { transform: translate(-50%, -50%) scale(0) rotate(-20deg); opacity: 0; }
-                    30% { transform: translate(-50%, -50%) scale(1.8) rotate(10deg); opacity: 1; }
-                    60% { transform: translate(-50%, -50%) scale(1.2) rotate(-5deg); opacity: 1; }
-                    100% { transform: translate(-50%, -50%) scale(1.5) rotate(0deg); opacity: 0; }
+                    0% { transform: translate(-50%, -50%) scale(0) rotate(-30deg); opacity: 0; }
+                    30% { transform: translate(-50%, -50%) scale(2) rotate(15deg); opacity: 1; }
+                    60% { transform: translate(-50%, -50%) scale(1.3) rotate(-8deg); opacity: 1; }
+                    100% { transform: translate(-50%, -50%) scale(1.8) rotate(0deg); opacity: 0; }
                 }
             `;
             document.head.appendChild(kissStyle);
@@ -2118,7 +2274,7 @@
             setTimeout(() => {
                 if (bigKiss.parentNode) bigKiss.remove();
                 if (kissStyle.parentNode) kissStyle.remove();
-            }, 2500);
+            }, 2800);
 
             const btn = e.currentTarget;
             btn.textContent = '💋 MWAH! 💋';
@@ -2131,162 +2287,13 @@
 
         // ---- NAME CLICK SURPRISE ----
         document.getElementById('nameWendy').addEventListener('click', function() {
-            const hearts = ['❤️', '💕', '💖', '💗', '💝', '💞', '💘', '🌸', '🌹', '💐'];
-            for (let i = 0; i < 40; i++) {
+            const hearts = ['❤️', '💕', '💖', '💗', '💝', '💞', '💘', '🌸', '🌹', '💐', '💋', '💍'];
+            for (let i = 0; i < 50; i++) {
                 const heart = document.createElement('div');
                 heart.className = 'confetti-piece';
                 heart.style.left = (Math.random() * window.innerWidth) + 'px';
                 heart.style.top = (Math.random() * window.innerHeight) + 'px';
                 heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-                heart.style.background = 'transparent';
-                heart.style.fontSize = (20 + Math.random() * 50) + 'px';
-                heart.style.width = 'auto';
-                heart.style.height = 'auto';
-                heart.style.display = 'flex';
-                heart.style.alignItems = 'center';
-                heart.style.justifyContent = 'center';
-                const angle = Math.random() * 2 * Math.PI;
-                const dist = 100 + Math.random() * 500;
-                heart.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
-                heart.style.setProperty('--ty', Math.sin(angle) * dist - 400 + 'px');
-                heart.style.animationDuration = (1.5 + Math.random() * 2.5) + 's';
-                document.body.appendChild(heart);
-                setTimeout(() => { if (heart.parentNode) heart.remove(); }, 4000);
-            }
-
-            const text = document.createElement('div');
-            text.style.cssText = `
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%) scale(0);
-                font-size: clamp(3rem, 10vw, 6rem);
-                font-weight: 900;
-                z-index: 99998;
-                pointer-events: none;
-                animation: namePop 1.5s ease-out forwards;
-                text-shadow: 0 0 80px rgba(255,107,157,0.3);
-            `;
-            text.className = 'rainbow-text';
-            text.textContent = '💕 WENDY! 💕';
-            document.body.appendChild(text);
-            
-            const nameStyle = document.createElement('style');
-            nameStyle.textContent = `
-                @keyframes namePop {
-                    0% { transform: translate(-50%, -50%) scale(0) rotate(-10deg); opacity: 0; }
-                    40% { transform: translate(-50%, -50%) scale(1.3) rotate(5deg); opacity: 1; }
-                    70% { transform: translate(-50%, -50%) scale(1) rotate(-3deg); opacity: 1; }
-                    100% { transform: translate(-50%, -50%) scale(1.1) rotate(0deg); opacity: 0; }
-                }
-            `;
-            document.head.appendChild(nameStyle);
-            
-            setTimeout(() => {
-                if (text.parentNode) text.remove();
-                if (nameStyle.parentNode) nameStyle.remove();
-            }, 2000);
-        });
-
-        document.getElementById('nameZshenawer').addEventListener('click', function() {
-            const hearts = ['❤️', '💕', '💖', '💗', '💝', '💞', '💘', '⭐', '✨', '💫'];
-            for (let i = 0; i < 40; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'confetti-piece';
-                heart.style.left = (Math.random() * window.innerWidth) + 'px';
-                heart.style.top = (Math.random() * window.innerHeight) + 'px';
-                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-                heart.style.background = 'transparent';
-                heart.style.fontSize = (20 + Math.random() * 50) + 'px';
-                heart.style.width = 'auto';
-                heart.style.height = 'auto';
-                heart.style.display = 'flex';
-                heart.style.alignItems = 'center';
-                heart.style.justifyContent = 'center';
-                const angle = Math.random() * 2 * Math.PI;
-                const dist = 100 + Math.random() * 500;
-                heart.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
-                heart.style.setProperty('--ty', Math.sin(angle) * dist - 400 + 'px');
-                heart.style.animationDuration = (1.5 + Math.random() * 2.5) + 's';
-                document.body.appendChild(heart);
-                setTimeout(() => { if (heart.parentNode) heart.remove(); }, 4000);
-            }
-
-            const text = document.createElement('div');
-            text.style.cssText = `
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%) scale(0);
-                font-size: clamp(3rem, 10vw, 6rem);
-                font-weight: 900;
-                z-index: 99998;
-                pointer-events: none;
-                animation: namePop 1.5s ease-out forwards;
-                text-shadow: 0 0 80px rgba(167,208,255,0.3);
-                color: #a7d0ff;
-            `;
-            text.textContent = '⭐ ZSHENAWER! ⭐';
-            document.body.appendChild(text);
-            
-            const nameStyle = document.createElement('style');
-            nameStyle.textContent = `
-                @keyframes namePop {
-                    0% { transform: translate(-50%, -50%) scale(0) rotate(-10deg); opacity: 0; }
-                    40% { transform: translate(-50%, -50%) scale(1.3) rotate(5deg); opacity: 1; }
-                    70% { transform: translate(-50%, -50%) scale(1) rotate(-3deg); opacity: 1; }
-                    100% { transform: translate(-50%, -50%) scale(1.1) rotate(0deg); opacity: 0; }
-                }
-            `;
-            document.head.appendChild(nameStyle);
-            
-            setTimeout(() => {
-                if (text.parentNode) text.remove();
-                if (nameStyle.parentNode) nameStyle.remove();
-            }, 2000);
-        });
-
-        // ---- CLICK ANYWHERE EFFECTS ----
-        document.addEventListener('click', function(e) {
-            if (e.target.closest('button') || e.target.closest('select') || e.target.closest('.ig-item') || e.target.closest('.image-viewer') || e.target.closest('.love-note') || e.target.closest('.kiss-effect')) return;
-            for (let i = 0; i < 25; i++) {
-                const spark = document.createElement('div');
-                spark.className = 'confetti-piece';
-                spark.style.left = (e.clientX + (Math.random() - 0.5) * 180) + 'px';
-                spark.style.top = (e.clientY + (Math.random() - 0.5) * 180) + 'px';
-                spark.style.background = ['#ffd700', '#ff6b9d', '#ffb3d9', '#a7d0ff', '#ffdf8c', '#7bed9f', '#ff9ff3', '#ff4757'][Math.floor(Math.random() * 8)];
-                spark.style.width = (4 + Math.random() * 18) + 'px';
-                spark.style.height = spark.style.width;
-                spark.style.borderRadius = '50%';
-                spark.style.setProperty('--tx', (Math.random() - 0.5) * 350 + 'px');
-                spark.style.setProperty('--ty', (Math.random() - 0.5) * 350 - 200 + 'px');
-                spark.style.animationDuration = (0.8 + Math.random() * 1.8) + 's';
-                const emojis = ['❤️', '💕', '✨', '💖', '💗', '🌟', '💫', '💞', '💘', '🌸'];
-                if (i % 3 === 0) {
-                    spark.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-                    spark.style.background = 'transparent';
-                    spark.style.fontSize = (14 + Math.random() * 24) + 'px';
-                    spark.style.width = 'auto';
-                    spark.style.height = 'auto';
-                    spark.style.display = 'flex';
-                    spark.style.alignItems = 'center';
-                    spark.style.justifyContent = 'center';
-                }
-                document.body.appendChild(spark);
-                setTimeout(() => { if (spark.parentNode) spark.remove(); }, 3000);
-            }
-        });
-
-        // ---- DOUBLE CLICK SECRET ----
-        document.addEventListener('dblclick', function(e) {
-            if (e.target.closest('button') || e.target.closest('select') || e.target.closest('.ig-item') || e.target.closest('.image-viewer')) return;
-            
-            for (let i = 0; i < 80; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'confetti-piece';
-                heart.style.left = (e.clientX + (Math.random() - 0.5) * 400) + 'px';
-                heart.style.top = (e.clientY + (Math.random() - 0.5) * 400) + 'px';
-                heart.textContent = ['❤️', '💕', '💖', '💗', '💝', '💞', '💘', '💋'][Math.floor(Math.random() * 8)];
                 heart.style.background = 'transparent';
                 heart.style.fontSize = (20 + Math.random() * 60) + 'px';
                 heart.style.width = 'auto';
@@ -2298,43 +2305,111 @@
                 const dist = 100 + Math.random() * 600;
                 heart.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
                 heart.style.setProperty('--ty', Math.sin(angle) * dist - 500 + 'px');
-                heart.style.animationDuration = (1.5 + Math.random() * 2.5) + 's';
+                heart.style.animationDuration = (1.5 + Math.random() * 3) + 's';
                 document.body.appendChild(heart);
-                setTimeout(() => { if (heart.parentNode) heart.remove(); }, 4000);
+                setTimeout(() => { if (heart.parentNode) heart.remove(); }, 4500);
+            }
+
+            const container = document.getElementById('iloveyouContainer');
+            container.classList.add('active');
+            setTimeout(() => {
+                container.classList.remove('active');
+            }, 3000);
+        });
+
+        document.getElementById('nameZshenawer').addEventListener('click', function() {
+            const hearts = ['❤️', '💕', '💖', '💗', '💝', '💞', '💘', '⭐', '✨', '💫', '🌟'];
+            for (let i = 0; i < 50; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'confetti-piece';
+                heart.style.left = (Math.random() * window.innerWidth) + 'px';
+                heart.style.top = (Math.random() * window.innerHeight) + 'px';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.background = 'transparent';
+                heart.style.fontSize = (20 + Math.random() * 60) + 'px';
+                heart.style.width = 'auto';
+                heart.style.height = 'auto';
+                heart.style.display = 'flex';
+                heart.style.alignItems = 'center';
+                heart.style.justifyContent = 'center';
+                const angle = Math.random() * 2 * Math.PI;
+                const dist = 100 + Math.random() * 600;
+                heart.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+                heart.style.setProperty('--ty', Math.sin(angle) * dist - 500 + 'px');
+                heart.style.animationDuration = (1.5 + Math.random() * 3) + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => { if (heart.parentNode) heart.remove(); }, 4500);
+            }
+
+            const container = document.getElementById('iloveyouContainer');
+            container.classList.add('active');
+            setTimeout(() => {
+                container.classList.remove('active');
+            }, 3000);
+        });
+
+        // ---- CLICK ANYWHERE EFFECTS ----
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('button') || e.target.closest('select') || e.target.closest('.ig-item') || e.target.closest('.image-viewer') || e.target.closest('.love-note') || e.target.closest('.kiss-effect')) return;
+            for (let i = 0; i < 30; i++) {
+                const spark = document.createElement('div');
+                spark.className = 'confetti-piece';
+                spark.style.left = (e.clientX + (Math.random() - 0.5) * 200) + 'px';
+                spark.style.top = (e.clientY + (Math.random() - 0.5) * 200) + 'px';
+                spark.style.background = ['#ffd700', '#ff6b9d', '#ffb3d9', '#a7d0ff', '#ffdf8c', '#7bed9f', '#ff9ff3', '#ff4757', '#2ed573'][Math.floor(Math.random() * 9)];
+                spark.style.width = (4 + Math.random() * 20) + 'px';
+                spark.style.height = spark.style.width;
+                spark.style.borderRadius = '50%';
+                spark.style.setProperty('--tx', (Math.random() - 0.5) * 400 + 'px');
+                spark.style.setProperty('--ty', (Math.random() - 0.5) * 400 - 250 + 'px');
+                spark.style.animationDuration = (0.8 + Math.random() * 2) + 's';
+                const emojis = ['❤️', '💕', '✨', '💖', '💗', '🌟', '💫', '💞', '💘', '🌸', '💋'];
+                if (i % 3 === 0) {
+                    spark.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    spark.style.background = 'transparent';
+                    spark.style.fontSize = (14 + Math.random() * 26) + 'px';
+                    spark.style.width = 'auto';
+                    spark.style.height = 'auto';
+                    spark.style.display = 'flex';
+                    spark.style.alignItems = 'center';
+                    spark.style.justifyContent = 'center';
+                }
+                document.body.appendChild(spark);
+                setTimeout(() => { if (spark.parentNode) spark.remove(); }, 3200);
+            }
+        });
+
+        // ---- DOUBLE CLICK SECRET ----
+        document.addEventListener('dblclick', function(e) {
+            if (e.target.closest('button') || e.target.closest('select') || e.target.closest('.ig-item') || e.target.closest('.image-viewer')) return;
+            
+            for (let i = 0; i < 100; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'confetti-piece';
+                heart.style.left = (e.clientX + (Math.random() - 0.5) * 500) + 'px';
+                heart.style.top = (e.clientY + (Math.random() - 0.5) * 500) + 'px';
+                heart.textContent = ['❤️', '💕', '💖', '💗', '💝', '💞', '💘', '💋', '💍', '🌹'][Math.floor(Math.random() * 10)];
+                heart.style.background = 'transparent';
+                heart.style.fontSize = (20 + Math.random() * 70) + 'px';
+                heart.style.width = 'auto';
+                heart.style.height = 'auto';
+                heart.style.display = 'flex';
+                heart.style.alignItems = 'center';
+                heart.style.justifyContent = 'center';
+                const angle = Math.random() * 2 * Math.PI;
+                const dist = 100 + Math.random() * 700;
+                heart.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+                heart.style.setProperty('--ty', Math.sin(angle) * dist - 600 + 'px');
+                heart.style.animationDuration = (1.5 + Math.random() * 3) + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => { if (heart.parentNode) heart.remove(); }, 4500);
             }
             
-            const msg = document.createElement('div');
-            msg.style.cssText = `
-                position: fixed;
-                top: 20%;
-                left: 50%;
-                transform: translateX(-50%);
-                font-size: clamp(2rem, 6vw, 4rem);
-                font-weight: 900;
-                z-index: 99998;
-                pointer-events: none;
-                animation: msgFloat 2.5s ease-out forwards;
-                text-shadow: 0 0 60px rgba(255,107,157,0.3);
-            `;
-            msg.className = 'rainbow-text';
-            msg.textContent = '💕 FOREVER & ALWAYS 💕';
-            document.body.appendChild(msg);
-            
-            const msgStyle = document.createElement('style');
-            msgStyle.textContent = `
-                @keyframes msgFloat {
-                    0% { opacity: 0; transform: translateX(-50%) translateY(50px) scale(0.5); }
-                    30% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1.2); }
-                    70% { opacity: 1; transform: translateX(-50%) translateY(-10px) scale(1); }
-                    100% { opacity: 0; transform: translateX(-50%) translateY(-60px) scale(1.1); }
-                }
-            `;
-            document.head.appendChild(msgStyle);
-            
+            const container = document.getElementById('iloveyouContainer');
+            container.classList.add('active');
             setTimeout(() => {
-                if (msg.parentNode) msg.remove();
-                if (msgStyle.parentNode) msgStyle.remove();
-            }, 3000);
+                container.classList.remove('active');
+            }, 4000);
         });
 
         console.log('💞 Wendy & Zshenawer — July 17, 2025 forever! 💞');
@@ -2345,6 +2420,7 @@
         console.log('💥 Click any photo to view in fullscreen!');
         console.log('💌 Click "Love Note" for random sweet messages!');
         console.log('💋 Click "Kiss" for a shower of kisses!');
+        console.log('💕 Click "I Love You" for the ultimate love explosion!');
         console.log('🎉 Click "Surprise!" for an epic celebration!');
         console.log('👆 Click names for a special surprise!');
         console.log('🖱️ Move mouse for sparkle trail!');
