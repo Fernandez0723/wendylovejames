@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes" />
-    <title>💞 Wendy & Zshenawer – Our Love Story</title>
+    <title>💞 Wendy & Zshenawer – Our Love Story 💞</title>
     <style>
         * {
             margin: 0;
@@ -20,6 +20,18 @@
             justify-content: center;
             padding: 20px;
             overflow-x: hidden;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text y="20" font-size="20">❤️</text></svg>') 12 12, auto;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0a0f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #ff6b9d, #ffd700);
+            border-radius: 10px;
         }
 
         .presentation {
@@ -32,6 +44,7 @@
             position: relative;
             overflow: hidden;
             transition: all 0.3s;
+            border: 1px solid rgba(255, 215, 0, 0.05);
         }
 
         .presentation::before {
@@ -68,6 +81,23 @@
             z-index: 1;
         }
 
+        .presentation::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #ff6b9d, #ffd700, #ff6b9d, #a7d0ff, #ff6b9d);
+            background-size: 300% 300%;
+            z-index: -1;
+            animation: borderGlow 6s ease-in-out infinite;
+            opacity: 0.3;
+            filter: blur(8px);
+        }
+        @keyframes borderGlow {
+            0%, 100% { background-position: 0% 50%; opacity: 0.3; }
+            50% { background-position: 100% 50%; opacity: 0.6; }
+        }
+
         /* ---- TITLE SECTION ---- */
         .title-section {
             text-align: center;
@@ -89,6 +119,27 @@
             position: relative;
             display: inline-block;
         }
+        .main-title::after {
+            content: '💞';
+            position: absolute;
+            right: -50px;
+            top: -10px;
+            font-size: 2rem;
+            animation: heartFloat 2s ease-in-out infinite;
+        }
+        .main-title::before {
+            content: '💞';
+            position: absolute;
+            left: -50px;
+            top: -10px;
+            font-size: 2rem;
+            animation: heartFloat 2s ease-in-out infinite 0.5s;
+        }
+        @keyframes heartFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.2); }
+        }
+
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -111,11 +162,61 @@
             color: #ffb3d9;
             font-weight: 700;
             letter-spacing: 2px;
+            text-shadow: 0 0 30px rgba(255, 107, 157, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        .subtitle .name-highlight::after {
+            content: '💕';
+            position: absolute;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .subtitle .name-highlight:hover::after {
+            opacity: 1;
+            animation: sparkleAround 1s ease-out forwards;
+        }
+        @keyframes sparkleAround {
+            0% { transform: translate(0, -20px) scale(0); opacity: 0; }
+            50% { transform: translate(30px, -30px) scale(1.5); opacity: 1; }
+            100% { transform: translate(60px, -40px) scale(0); opacity: 0; }
+        }
+        .subtitle .name-highlight:hover {
+            text-shadow: 0 0 60px rgba(255, 107, 157, 0.6);
+            transform: scale(1.05);
+            display: inline-block;
         }
         .subtitle .name-highlight2 {
             color: #a7d0ff;
             font-weight: 700;
             letter-spacing: 2px;
+            text-shadow: 0 0 30px rgba(100, 200, 255, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        .subtitle .name-highlight2::after {
+            content: '💕';
+            position: absolute;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .subtitle .name-highlight2:hover::after {
+            opacity: 1;
+            animation: sparkleAround2 1s ease-out forwards;
+        }
+        @keyframes sparkleAround2 {
+            0% { transform: translate(0, -20px) scale(0); opacity: 0; }
+            50% { transform: translate(-30px, -30px) scale(1.5); opacity: 1; }
+            100% { transform: translate(-60px, -40px) scale(0); opacity: 0; }
+        }
+        .subtitle .name-highlight2:hover {
+            text-shadow: 0 0 60px rgba(100, 200, 255, 0.6);
+            transform: scale(1.05);
+            display: inline-block;
         }
 
         .special-date {
@@ -130,6 +231,12 @@
             color: #ffd700;
             display: inline-block;
             animation: heartBeat 1.8s ease-in-out infinite;
+        }
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
         }
 
         /* ---- FLOATING HEARTS BG ---- */
@@ -154,7 +261,7 @@
             100% { transform: translateY(-100vh) rotate(720deg) scale(1.2); opacity: 0; }
         }
 
-        /* ---- INSTAGRAM-STYLE PHOTO GRID (MIXED SIZES) ---- */
+        /* ---- INSTAGRAM-STYLE PHOTO GRID ---- */
         .photo-grid-section {
             margin-bottom: 28px;
         }
@@ -198,7 +305,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease;
+            transition: transform 0.6s ease, filter 0.6s ease;
+        }
+        .ig-grid .ig-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(1.1) saturate(1.2);
         }
         .ig-grid .ig-item .ig-emoji {
             font-size: 2.4rem;
@@ -207,7 +318,7 @@
             transition: transform 0.4s ease;
         }
         .ig-grid .ig-item:hover .ig-emoji {
-            transform: scale(1.15);
+            transform: scale(1.2) rotate(10deg);
         }
         .ig-grid .ig-item:hover {
             transform: scale(1.04);
@@ -235,7 +346,6 @@
             opacity: 1;
         }
 
-        /* ---- MIXED SIZES (Instagram-style) ---- */
         .ig-grid .ig-item.featured {
             grid-row: span 2;
             grid-column: span 2;
@@ -263,7 +373,6 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        /* ---- MORE BUTTON ---- */
         .more-btn-wrapper {
             text-align: center;
             margin-top: 12px;
@@ -288,6 +397,7 @@
             color: #fff;
             transform: scale(1.05);
             border-color: rgba(255,215,0,0.3);
+            box-shadow: 0 0 30px rgba(255,215,0,0.05);
         }
         .more-btn .count-badge {
             display: inline-block;
@@ -409,6 +519,7 @@
             background: rgba(255,107,157,0.2);
             transform: rotate(90deg) scale(1.1);
             border-color: #ff6b9d;
+            box-shadow: 0 0 40px rgba(255,107,157,0.2);
         }
 
         .image-viewer .viewer-nav {
@@ -445,6 +556,7 @@
         }
         .image-viewer .viewer-nav .nav-dot:hover {
             background: rgba(255,255,255,0.4);
+            transform: scale(1.3);
         }
 
         /* ---- TIMELINE ---- */
@@ -457,6 +569,15 @@
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             animation: fadeInUp 1.2s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,107,157,0.03), rgba(255,215,0,0.03));
+            pointer-events: none;
         }
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(25px); }
@@ -494,6 +615,8 @@
             animation: slideIn 0.6s ease-out forwards;
             opacity: 0;
             transform: translateX(-20px);
+            position: relative;
+            cursor: pointer;
         }
         .tl-item:nth-child(1) { animation-delay: 0.08s; }
         .tl-item:nth-child(2) { animation-delay: 0.16s; }
@@ -514,6 +637,20 @@
             background: rgba(255, 255, 255, 0.08);
             transform: translateX(6px) scale(1.01);
             border-left-color: #ffd700;
+            box-shadow: 0 0 30px rgba(255,215,0,0.05);
+        }
+        .tl-item::after {
+            content: '💕';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .tl-item:hover::after {
+            opacity: 1;
+            animation: heartBeat 1s ease-in-out infinite;
         }
 
         .tl-item .tl-icon {
@@ -523,6 +660,10 @@
             text-align: center;
             animation: iconFloat 3s ease-in-out infinite;
             margin-top: 2px;
+        }
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
         .tl-item .tl-content {
             flex: 1;
@@ -558,6 +699,9 @@
             letter-spacing: 0.5px;
             flex-shrink: 0;
             margin-top: 2px;
+            background: rgba(255,215,0,0.05);
+            padding: 2px 10px;
+            border-radius: 20px;
         }
 
         /* ---- COUNTDOWN ---- */
@@ -569,6 +713,19 @@
             border-radius: 20px;
             border: 1px solid rgba(255, 215, 0, 0.06);
             animation: fadeInUp 1.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        .countdown-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.03), transparent);
+            animation: shimmerSlide 3s ease-in-out infinite;
+        }
+        @keyframes shimmerSlide {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
         .countdown-section .countdown-label {
             color: rgba(255, 255, 255, 0.4);
@@ -576,6 +733,7 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             font-weight: 600;
+            position: relative;
         }
         .countdown-section .countdown-timer {
             font-size: clamp(1.2rem, 3vw, 2.2rem);
@@ -587,6 +745,7 @@
             margin-top: 2px;
             letter-spacing: 2px;
             animation: titlePulse 2s ease-in-out infinite;
+            position: relative;
         }
         .countdown-section .anniversary-badge {
             display: inline-block;
@@ -599,6 +758,8 @@
             font-weight: 700;
             letter-spacing: 1px;
             animation: heartBeat 2s ease-in-out infinite;
+            position: relative;
+            box-shadow: 0 0 30px rgba(255,107,157,0.2);
         }
 
         /* ---- MUSIC SELECTOR ---- */
@@ -640,6 +801,7 @@
         .music-selector select:focus {
             outline: none;
             border-color: #ff6b9d;
+            box-shadow: 0 0 30px rgba(255,107,157,0.1);
         }
 
         /* ---- FOOTER ---- */
@@ -702,6 +864,12 @@
         .footer-text strong {
             color: rgba(255, 215, 0, 0.5);
             font-weight: 700;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .footer-text strong:hover {
+            color: #ffd700;
+            text-shadow: 0 0 30px rgba(255,215,0,0.3);
         }
 
         .btn-wrapper {
@@ -772,6 +940,11 @@
             border-color: #ff6b9d;
             color: #ffb3d9;
             box-shadow: 0 0 30px rgba(255,107,157,0.15);
+            animation: musicPulse 1.5s ease-in-out infinite;
+        }
+        @keyframes musicPulse {
+            0%, 100% { box-shadow: 0 0 30px rgba(255,107,157,0.15); }
+            50% { box-shadow: 0 0 60px rgba(255,107,157,0.3); }
         }
 
         /* ---- SPARKLE CONTAINER ---- */
@@ -814,11 +987,98 @@
             100% { opacity: 0; transform: translate(var(--tx), var(--ty)) rotate(720deg) scale(0); }
         }
 
+        /* ---- RAINBOW TEXT ---- */
+        .rainbow-text {
+            animation: rainbow 3s ease-in-out infinite;
+        }
+        @keyframes rainbow {
+            0%, 100% { color: #ff6b9d; }
+            16% { color: #ffd700; }
+            33% { color: #ffb3d9; }
+            50% { color: #a7d0ff; }
+            66% { color: #7bed9f; }
+            83% { color: #ff9ff3; }
+        }
+
+        /* ---- FLOATING LOVE NOTES ---- */
+        .love-note {
+            position: fixed;
+            font-size: 1.2rem;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 16px 24px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,215,0,0.1);
+            color: #fff;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            z-index: 99998;
+            pointer-events: none;
+            animation: noteFloat 4s ease-out forwards;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            max-width: 300px;
+        }
+        @keyframes noteFloat {
+            0% { opacity: 0; transform: translateY(50px) scale(0.8); }
+            20% { opacity: 1; transform: translateY(-20px) scale(1.05); }
+            80% { opacity: 1; transform: translateY(-80px) scale(1); }
+            100% { opacity: 0; transform: translateY(-150px) scale(0.9); }
+        }
+
+        /* ---- VIEWER COUNTER ---- */
+        .viewer-counter {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            background: rgba(0,0,0,0.3);
+            padding: 6px 16px;
+            border-radius: 20px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* ---- MAGIC SPARKLE TRAIL ---- */
+        .sparkle-trail {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            font-size: 1.2rem;
+            animation: trailFade 1s ease-out forwards;
+        }
+        @keyframes trailFade {
+            0% { opacity: 1; transform: translate(0, 0) scale(1); }
+            100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.5); }
+        }
+
+        /* ---- SECRET KISS EFFECT ---- */
+        .kiss-effect {
+            position: fixed;
+            pointer-events: none;
+            z-index: 99999;
+            font-size: 4rem;
+            animation: kissBurst 1.5s ease-out forwards;
+        }
+        @keyframes kissBurst {
+            0% { opacity: 1; transform: scale(0) rotate(-20deg); }
+            30% { transform: scale(1.5) rotate(10deg); }
+            60% { transform: scale(1) rotate(-5deg); }
+            100% { opacity: 0; transform: scale(1.8) rotate(0deg); }
+        }
+
         /* ---- RESPONSIVE ---- */
         @media (max-width: 600px) {
             .presentation {
                 padding: 18px 14px 22px;
                 border-radius: 32px;
+            }
+            .main-title::after, .main-title::before {
+                display: none;
             }
             .tl-item {
                 padding: 10px 12px;
@@ -884,6 +1144,12 @@
             .ig-grid .ig-item.hidden-item.show {
                 display: flex;
             }
+            .viewer-counter {
+                top: 15px;
+                left: 20px;
+                font-size: 0.7rem;
+                padding: 4px 12px;
+            }
         }
 
         @media (max-width: 400px) {
@@ -903,9 +1169,65 @@
         #bgMusic {
             display: none;
         }
+
+        /* ---- PRELOADER ---- */
+        .preloader {
+            position: fixed;
+            inset: 0;
+            background: #0b0a0f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999999;
+            flex-direction: column;
+            gap: 20px;
+            transition: all 0.8s ease;
+        }
+        .preloader.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .preloader .loader-heart {
+            font-size: 4rem;
+            animation: heartBeat 0.8s ease-in-out infinite;
+        }
+        .preloader .loader-text {
+            color: rgba(255,255,255,0.3);
+            font-size: 1rem;
+            letter-spacing: 4px;
+            animation: pulseText 1.5s ease-in-out infinite;
+        }
+        @keyframes pulseText {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        .preloader .loader-bar {
+            width: 200px;
+            height: 3px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .preloader .loader-bar .fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff6b9d, #ffd700);
+            animation: loadFill 2s ease-out forwards;
+        }
+        @keyframes loadFill {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
     </style>
 </head>
 <body>
+
+    <!-- PRELOADER -->
+    <div class="preloader" id="preloader">
+        <div class="loader-heart">💕</div>
+        <div class="loader-text">Loading Our Love Story...</div>
+        <div class="loader-bar"><div class="fill"></div></div>
+    </div>
 
     <div class="presentation">
 
@@ -914,11 +1236,11 @@
 
         <!-- TITLE -->
         <div class="title-section">
-            <h1 class="main-title">💞 Wendy & Zshenawer 💞</h1>
+            <h1 class="main-title">Wendy & Zshenawer</h1>
             <p class="subtitle">
-                <span class="name-highlight">Wendy Jean Mandalo</span> 
+                <span class="name-highlight" id="nameWendy">Wendy Jean Mandalo</span> 
                 <span style="color:rgba(255,255,255,0.3);margin:0 6px;">❤️</span> 
-                <span class="name-highlight2">Zshenawer James Fernandez</span>
+                <span class="name-highlight2" id="nameZshenawer">Zshenawer James Fernandez</span>
             </p>
             <p class="subtitle" style="font-size:clamp(0.6rem,1.2vw,0.85rem);margin-top:2px;letter-spacing:3px;color:rgba(255,255,255,0.25);">
                 ✨ A Love Story Written in the Stars ✨
@@ -935,200 +1257,193 @@
             <div class="anniversary-badge" id="anniversaryBadge">🎉 Year 1 🎉</div>
         </div>
 
-        <!-- PHOTO GRID - INSTAGRAM STYLE WITH MIXED SIZES -->
+        <!-- PHOTO GRID -->
         <div class="photo-grid-section">
             <div class="grid-label">📸 <span>30</span> Beautiful Memories <span style="color:rgba(255,255,255,0.2);font-size:0.7rem;">(click to view)</span></div>
             <div class="ig-grid" id="igGrid">
-                <!-- VISIBLE ITEMS (6 items - mixed sizes for Instagram look) -->
-                <!-- BIG FEATURED - spans 2x2 -->
-                <div class="ig-item featured visible-item" data-index="0" data-label="Our First Meet" data-sub="SEAIT Campus · July 17, 2025" data-image="uploads/001.jpg">
+                <!-- VISIBLE ITEMS -->
+                <div class="ig-item featured visible-item" data-index="0" data-label="Our First Meet" data-sub="SEAIT Campus · July 17, 2025 · 10 AM" data-image="uploads/001.jpg">
                     <img src="uploads/001.jpg" alt="Our First Meet" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">💕</span>
-                    <div class="ig-overlay">Our First Meet · SEAIT · July 17, 2025</div>
+                    <div class="ig-overlay">💕 Our First Meet · SEAIT · July 17, 2025</div>
                 </div>
 
-                <!-- MEDIUM - spans 2 columns -->
-                <div class="ig-item medium visible-item" data-index="1" data-label="First Date" data-sub="Restaurant after class" data-image="uploads/002.jpg">
+                <div class="ig-item medium visible-item" data-index="1" data-label="First Date" data-sub="Restaurant after class · Our first meal together" data-image="uploads/002.jpg">
                     <img src="uploads/002.jpg" alt="First Date" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">🍽️</span>
-                    <div class="ig-overlay">First Date · Restaurant</div>
+                    <div class="ig-overlay">🍽️ First Date · Restaurant</div>
                 </div>
 
-                <!-- SMALL - normal 1x1 -->
-                <div class="ig-item visible-item" data-index="2" data-label="First Kiss" data-sub="On the Bus going to another town" data-image="uploads/003.jpg">
+                <div class="ig-item visible-item" data-index="2" data-label="First Kiss" data-sub="On the Bus · Going to another town · Unexpected & Magical" data-image="uploads/003.jpg">
                     <img src="uploads/003.jpg" alt="First Kiss" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">🚌💋</span>
-                    <div class="ig-overlay">First Kiss on the Bus</div>
+                    <div class="ig-overlay">🚌💋 First Kiss on the Bus</div>
                 </div>
 
-                <!-- TALL - spans 2 rows -->
-                <div class="ig-item tall visible-item" data-index="3" data-label="Golden Sunset" data-sub="Our favorite sunset together" data-image="uploads/004.jpg">
+                <div class="ig-item tall visible-item" data-index="3" data-label="Golden Sunset" data-sub="Our favorite sunset · Watching the sky turn golden together" data-image="uploads/004.jpg">
                     <img src="uploads/004.jpg" alt="Golden Sunset" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">🌅</span>
-                    <div class="ig-overlay">Golden Sunset</div>
+                    <div class="ig-overlay">🌅 Golden Sunset</div>
                 </div>
 
-                <!-- SMALL -->
-                <div class="ig-item visible-item" data-index="4" data-label="Forever Promise" data-sub="I promise to love you forever" data-image="uploads/005.jpg">
+                <div class="ig-item visible-item" data-index="4" data-label="Forever Promise" data-sub="I promise to love you forever · My heart belongs to you" data-image="uploads/005.jpg">
                     <img src="uploads/005.jpg" alt="Forever Promise" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">💍</span>
-                    <div class="ig-overlay">Forever Promise</div>
+                    <div class="ig-overlay">💍 Forever Promise</div>
                 </div>
 
-                <!-- SMALL -->
-                <div class="ig-item visible-item" data-index="5" data-label="Late Night Talks" data-sub="2 AM conversations" data-image="uploads/006.jpg">
+                <div class="ig-item visible-item" data-index="5" data-label="Late Night Talks" data-sub="2 AM conversations · Sharing dreams & secrets" data-image="uploads/006.jpg">
                     <img src="uploads/006.jpg" alt="Late Night Talks" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">🌙</span>
-                    <div class="ig-overlay">Late Night Talks</div>
+                    <div class="ig-overlay">🌙 Late Night Talks</div>
                 </div>
 
-                <!-- ===== HIDDEN ITEMS (24 more) ===== -->
-                <div class="ig-item hidden-item" data-index="6" data-label="Our Songs" data-sub="Music that reminds us of each other" data-image="uploads/007.jpg">
+                <!-- HIDDEN ITEMS -->
+                <div class="ig-item hidden-item" data-index="6" data-label="Our Songs" data-sub="Music that reminds us of each other · Our love playlist" data-image="uploads/007.jpg">
                     <img src="uploads/007.jpg" alt="Our Songs" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">🎶</span>
-                    <div class="ig-overlay">Our Songs</div>
+                    <div class="ig-overlay">🎶 Our Songs</div>
                 </div>
 
-                <div class="ig-item hidden-item" data-index="7" data-label="Beach Adventure" data-sub="Our first beach trip together" data-image="uploads/008.jpg">
+                <div class="ig-item hidden-item" data-index="7" data-label="Beach Adventure" data-sub="Our first beach trip · Sand, sun, and smiles" data-image="uploads/008.jpg">
                     <img src="uploads/008.jpg" alt="Beach Adventure" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">🏝️</span>
-                    <div class="ig-overlay">Beach Adventure</div>
+                    <div class="ig-overlay">🏝️ Beach Adventure</div>
                 </div>
 
-                <div class="ig-item hidden-item" data-index="8" data-label="First Roses" data-sub="The first flowers I gave you" data-image="uploads/009.jpg">
+                <div class="ig-item hidden-item" data-index="8" data-label="First Roses" data-sub="The first flowers I gave you · A symbol of my love" data-image="uploads/009.jpg">
                     <img src="uploads/009.jpg" alt="First Roses" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">🌹</span>
-                    <div class="ig-overlay">First Roses</div>
+                    <div class="ig-overlay">🌹 First Roses</div>
                 </div>
 
-                <div class="ig-item hidden-item" data-index="9" data-label="Coffee Dates" data-sub="Our coffee shop moments" data-image="uploads/010.jpg">
+                <div class="ig-item hidden-item" data-index="9" data-label="Coffee Dates" data-sub="Our coffee shop moments · Sipping love with every cup" data-image="uploads/010.jpg">
                     <img src="uploads/010.jpg" alt="Coffee Dates" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">☕</span>
-                    <div class="ig-overlay">Coffee Dates</div>
+                    <div class="ig-overlay">☕ Coffee Dates</div>
                 </div>
 
-                <div class="ig-item hidden-item" data-index="10" data-label="Study Together" data-sub="Studying side by side" data-image="uploads/011.jpg">
+                <div class="ig-item hidden-item" data-index="10" data-label="Study Together" data-sub="Studying side by side · Learning, growing, loving" data-image="uploads/011.jpg">
                     <img src="uploads/011.jpg" alt="Study Together" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">📚</span>
-                    <div class="ig-overlay">Study Together</div>
+                    <div class="ig-overlay">📚 Study Together</div>
                 </div>
 
-                <div class="ig-item hidden-item" data-index="11" data-label="Movie Nights" data-sub="Cuddles and movies" data-image="uploads/012.jpg">
+                <div class="ig-item hidden-item" data-index="11" data-label="Movie Nights" data-sub="Cuddles and movies · Every film is better with you" data-image="uploads/012.jpg">
                     <img src="uploads/012.jpg" alt="Movie Nights" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">🎬</span>
-                    <div class="ig-overlay">Movie Nights</div>
+                    <div class="ig-overlay">🎬 Movie Nights</div>
                 </div>
 
-                <div class="ig-item hidden-item" data-index="12" data-label="Food Trips" data-sub="Eating our way through the city" data-image="uploads/013.jpg">
+                <div class="ig-item hidden-item" data-index="12" data-label="Food Trips" data-sub="Eating our way through the city · Food tastes better with you" data-image="uploads/013.jpg">
                     <img src="uploads/013.jpg" alt="Food Trips" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">🍜</span>
-                    <div class="ig-overlay">Food Trips</div>
+                    <div class="ig-overlay">🍜 Food Trips</div>
                 </div>
 
-                <div class="ig-item hidden-item" data-index="13" data-label="Rainy Days" data-sub="Cozy moments in the rain" data-image="uploads/014.jpg">
+                <div class="ig-item hidden-item" data-index="13" data-label="Rainy Days" data-sub="Cozy moments in the rain · Finding warmth in each other" data-image="uploads/014.jpg">
                     <img src="uploads/014.jpg" alt="Rainy Days" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">🌧️</span>
-                    <div class="ig-overlay">Rainy Days</div>
+                    <div class="ig-overlay">🌧️ Rainy Days</div>
                 </div>
 
-                <div class="ig-item hidden-item" data-index="14" data-label="Celebrations" data-sub="Every milestone with you" data-image="uploads/015.jpg">
+                <div class="ig-item hidden-item" data-index="14" data-label="Celebrations" data-sub="Every milestone with you · Life is a celebration" data-image="uploads/015.jpg">
                     <img src="uploads/015.jpg" alt="Celebrations" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">🎂</span>
-                    <div class="ig-overlay">Celebrations</div>
+                    <div class="ig-overlay">🎂 Celebrations</div>
                 </div>
 
-                <div class="ig-item hidden-item" data-index="15" data-label="Selfie Time" data-sub="Capturing our moments" data-image="uploads/016.jpg">
+                <div class="ig-item hidden-item" data-index="15" data-label="Selfie Time" data-sub="Capturing our moments · Every photo tells our story" data-image="uploads/016.jpg">
                     <img src="uploads/016.jpg" alt="Selfie Time" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">📸</span>
-                    <div class="ig-overlay">Selfie Time</div>
+                    <div class="ig-overlay">📸 Selfie Time</div>
                 </div>
 
-                <div class="ig-item hidden-item" data-index="16" data-label="Holiday Vibes" data-sub="Christmas with you" data-image="uploads/017.jpg">
+                <div class="ig-item hidden-item" data-index="16" data-label="Holiday Vibes" data-sub="Christmas with you · The best gift is you" data-image="uploads/017.jpg">
                     <img src="uploads/017.jpg" alt="Holiday Vibes" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">🎄</span>
-                    <div class="ig-overlay">Holiday Vibes</div>
+                    <div class="ig-overlay">🎄 Holiday Vibes</div>
                 </div>
 
-                <div class="ig-item hidden-item" data-index="17" data-label="Flower Fields" data-sub="Walking through flowers" data-image="uploads/018.jpg">
+                <div class="ig-item hidden-item" data-index="17" data-label="Flower Fields" data-sub="Walking through flowers · Nature's beauty with you" data-image="uploads/018.jpg">
                     <img src="uploads/018.jpg" alt="Flower Fields" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">🌺</span>
-                    <div class="ig-overlay">Flower Fields</div>
+                    <div class="ig-overlay">🌺 Flower Fields</div>
                 </div>
 
-                <div class="ig-item hidden-item" data-index="18" data-label="Joyrides" data-sub="Adventures on the road" data-image="uploads/019.jpg">
+                <div class="ig-item hidden-item" data-index="18" data-label="Joyrides" data-sub="Adventures on the road · Every journey is better with you" data-image="uploads/019.jpg">
                     <img src="uploads/019.jpg" alt="Joyrides" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">🛵</span>
-                    <div class="ig-overlay">Joyrides</div>
+                    <div class="ig-overlay">🛵 Joyrides</div>
                 </div>
 
-                <div class="ig-item hidden-item" data-index="19" data-label="Fireworks Night" data-sub="Fireworks and your smile" data-image="uploads/020.jpg">
+                <div class="ig-item hidden-item" data-index="19" data-label="Fireworks Night" data-sub="Fireworks and your smile · You light up my world" data-image="uploads/020.jpg">
                     <img src="uploads/020.jpg" alt="Fireworks Night" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">🎆</span>
-                    <div class="ig-overlay">Fireworks Night</div>
+                    <div class="ig-overlay">🎆 Fireworks Night</div>
                 </div>
 
-                <div class="ig-item hidden-item" data-index="20" data-label="Love Letters" data-sub="Words from the heart" data-image="uploads/021.jpg">
+                <div class="ig-item hidden-item" data-index="20" data-label="Love Letters" data-sub="Words from the heart · My love in every letter" data-image="uploads/021.jpg">
                     <img src="uploads/021.jpg" alt="Love Letters" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">💌</span>
-                    <div class="ig-overlay">Love Letters</div>
+                    <div class="ig-overlay">💌 Love Letters</div>
                 </div>
 
-                <div class="ig-item hidden-item" data-index="21" data-label="1st Anniversary" data-sub="One year of love!" data-image="uploads/022.jpg">
+                <div class="ig-item hidden-item" data-index="21" data-label="1st Anniversary" data-sub="One year of love! · Forever begins now" data-image="uploads/022.jpg">
                     <img src="uploads/022.jpg" alt="1st Anniversary" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">🎉</span>
-                    <div class="ig-overlay">1st Anniversary!</div>
+                    <div class="ig-overlay">🎉 1st Anniversary!</div>
                 </div>
 
-                <div class="ig-item hidden-item" data-index="22" data-label="Starry Nights" data-sub="Looking at the stars together" data-image="uploads/023.jpg">
+                <div class="ig-item hidden-item" data-index="22" data-label="Starry Nights" data-sub="Looking at the stars together · Two souls, one sky" data-image="uploads/023.jpg">
                     <img src="uploads/023.jpg" alt="Starry Nights" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">💫</span>
-                    <div class="ig-overlay">Starry Nights</div>
+                    <div class="ig-overlay">💫 Starry Nights</div>
                 </div>
 
-                <div class="ig-item hidden-item" data-index="23" data-label="Colorful Days" data-sub="Every day is colorful with you" data-image="uploads/024.jpg">
+                <div class="ig-item hidden-item" data-index="23" data-label="Colorful Days" data-sub="Every day is colorful with you · Life is vibrant" data-image="uploads/024.jpg">
                     <img src="uploads/024.jpg" alt="Colorful Days" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">🌈</span>
-                    <div class="ig-overlay">Colorful Days</div>
+                    <div class="ig-overlay">🌈 Colorful Days</div>
                 </div>
 
-                <div class="ig-item hidden-item" data-index="24" data-label="Our Playlist" data-sub="Songs that tell our story" data-image="uploads/025.jpg">
+                <div class="ig-item hidden-item" data-index="24" data-label="Our Playlist" data-sub="Songs that tell our story · Every note is for you" data-image="uploads/025.jpg">
                     <img src="uploads/025.jpg" alt="Our Playlist" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">🎵</span>
-                    <div class="ig-overlay">Our Playlist</div>
+                    <div class="ig-overlay">🎵 Our Playlist</div>
                 </div>
 
-                <div class="ig-item hidden-item" data-index="25" data-label="Ocean Vibes" data-sub="By the sea with you" data-image="uploads/026.jpg">
+                <div class="ig-item hidden-item" data-index="25" data-label="Ocean Vibes" data-sub="By the sea with you · Endless like our love" data-image="uploads/026.jpg">
                     <img src="uploads/026.jpg" alt="Ocean Vibes" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">🌊</span>
-                    <div class="ig-overlay">Ocean Vibes</div>
+                    <div class="ig-overlay">🌊 Ocean Vibes</div>
                 </div>
 
-                <div class="ig-item hidden-item" data-index="26" data-label="Ice Cream Dates" data-sub="Sweet moments together" data-image="uploads/027.jpg">
+                <div class="ig-item hidden-item" data-index="26" data-label="Ice Cream Dates" data-sub="Sweet moments together · You're sweeter than ice cream" data-image="uploads/027.jpg">
                     <img src="uploads/027.jpg" alt="Ice Cream Dates" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">🍦</span>
-                    <div class="ig-overlay">Ice Cream Dates</div>
+                    <div class="ig-overlay">🍦 Ice Cream Dates</div>
                 </div>
 
-                <div class="ig-item hidden-item" data-index="27" data-label="Art Together" data-sub="Creating beautiful things" data-image="uploads/028.jpg">
+                <div class="ig-item hidden-item" data-index="27" data-label="Art Together" data-sub="Creating beautiful things · Our love is a masterpiece" data-image="uploads/028.jpg">
                     <img src="uploads/028.jpg" alt="Art Together" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">🎨</span>
-                    <div class="ig-overlay">Art Together</div>
+                    <div class="ig-overlay">🎨 Art Together</div>
                 </div>
 
-                <div class="ig-item hidden-item" data-index="28" data-label="Sunflower Field" data-sub="Sunflowers and smiles" data-image="uploads/029.jpg">
+                <div class="ig-item hidden-item" data-index="28" data-label="Sunflower Field" data-sub="Sunflowers and smiles · You make me bloom" data-image="uploads/029.jpg">
                     <img src="uploads/029.jpg" alt="Sunflower Field" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">🌻</span>
-                    <div class="ig-overlay">Sunflower Field</div>
+                    <div class="ig-overlay">🌻 Sunflower Field</div>
                 </div>
 
-                <div class="ig-item hidden-item" data-index="29" data-label="Endless Love" data-sub="My love for you is endless" data-image="uploads/030.jpg">
+                <div class="ig-item hidden-item" data-index="29" data-label="Endless Love" data-sub="My love for you is endless · Forever and always" data-image="uploads/030.jpg">
                     <img src="uploads/030.jpg" alt="Endless Love" onerror="this.style.display='none';this.parentElement.querySelector('.ig-emoji').style.display='flex'">
                     <span class="ig-emoji" style="display:none;">💖</span>
-                    <div class="ig-overlay">Endless Love</div>
+                    <div class="ig-overlay">💖 Endless Love</div>
                 </div>
             </div>
 
-            <!-- MORE BUTTON -->
             <div class="more-btn-wrapper">
                 <button class="more-btn" id="moreBtn">
                     📸 Show More <span class="count-badge" id="hiddenCount">+24</span>
@@ -1235,7 +1550,7 @@
                 <div class="music-selector">
                     <select id="musicSelector">
                         <option value="love">🎵 Alone - Heart</option>
-                        <option value="upbeat">🎵 Air Supply - Making Love Out OF Nothing At All</option>
+                        <option value="upbeat">🎵 Air Supply - Making Love Out Of Nothing At All</option>
                         <option value="chill">🎵 Bryan Adams - Heaven</option>
                         <option value="classic">🎵 Journey - Open Arms</option>
                         <option value="off">🔇 Off</option>
@@ -1243,6 +1558,8 @@
                     <button class="music-toggle" id="musicToggle">▶️ Play</button>
                 </div>
                 <button class="surprise-btn" id="surpriseBtn">💥 Surprise!</button>
+                <button class="surprise-btn" id="loveNoteBtn" style="background:linear-gradient(135deg,#a7d0ff,#7bed9f);box-shadow:0 4px 24px rgba(167,208,255,0.3);">💌 Love Note</button>
+                <button class="surprise-btn" id="kissBtn" style="background:linear-gradient(135deg,#ff9ff3,#ff6b9d);box-shadow:0 4px 24px rgba(255,107,157,0.3);">💋 Kiss</button>
             </div>
             <div class="footer-text">
                 Made with <strong>❤️</strong> for <strong>Wendy</strong> from <strong>Zshenawer</strong>
@@ -1254,6 +1571,7 @@
     <!-- FULLSCREEN IMAGE VIEWER -->
     <div class="image-viewer" id="imageViewer">
         <button class="close-viewer" id="closeViewer">✕</button>
+        <div class="viewer-counter" id="viewerCounter">1 / 30</div>
         <div class="viewer-content" id="viewerContent">
             <img class="viewer-image" id="viewerImage" src="" alt="Memory">
             <span class="viewer-emoji" id="viewerEmoji">💕</span>
@@ -1270,7 +1588,12 @@
     <div class="sparkle-container" id="sparkleContainer"></div>
 
     <script>
-        // ---- MUSIC LIBRARY - LOCAL FILES FROM UPLOADS FOLDER ----
+        // ---- PRELOADER ----
+        setTimeout(() => {
+            document.getElementById('preloader').classList.add('hide');
+        }, 2500);
+
+        // ---- MUSIC LIBRARY ----
         const musicLibrary = {
             love: {
                 url: 'uploads/Alone - Heart (Lyrics).mp3',
@@ -1278,7 +1601,7 @@
             },
             upbeat: {
                 url: 'uploads/Air Supply - Making Love Out OF Nothing At All (Lyrics).mp3',
-                name: 'Air Supply - Making Love Out OF Nothing At All'
+                name: 'Air Supply - Making Love Out Of Nothing At All'
             },
             chill: {
                 url: 'uploads/Bryan Adams - Heaven (Official Music Video).mp3',
@@ -1356,7 +1679,6 @@
             }
         });
 
-        // Auto-play attempt on first click
         document.addEventListener('click', function() {
             if (!isPlaying && musicSelector.value !== 'off') {
                 loadMusic(currentTrack);
@@ -1371,16 +1693,16 @@
         // ---- FLOATING HEARTS ----
         (function createHearts() {
             const container = document.getElementById('heartsBg');
-            const hearts = ['❤️', '💕', '💖', '💗', '💝', '✨', '🌟', '💫'];
-            for (let i = 0; i < 25; i++) {
+            const hearts = ['❤️', '💕', '💖', '💗', '💝', '✨', '🌟', '💫', '💞', '💘', '🌸', '💝'];
+            for (let i = 0; i < 40; i++) {
                 const el = document.createElement('span');
                 el.className = 'heart-float';
                 el.textContent = hearts[i % hearts.length];
                 el.style.left = Math.random() * 100 + '%';
-                el.style.fontSize = (12 + Math.random() * 22) + 'px';
-                el.style.animationDuration = (10 + Math.random() * 20) + 's';
+                el.style.fontSize = (12 + Math.random() * 26) + 'px';
+                el.style.animationDuration = (10 + Math.random() * 22) + 's';
                 el.style.animationDelay = (Math.random() * 15) + 's';
-                el.style.opacity = 0.05 + Math.random() * 0.1;
+                el.style.opacity = 0.05 + Math.random() * 0.12;
                 container.appendChild(el);
             }
         })();
@@ -1388,18 +1710,40 @@
         // ---- SPARKLES ----
         (function createSparkles() {
             const container = document.getElementById('sparkleContainer');
-            for (let i = 0; i < 35; i++) {
+            for (let i = 0; i < 50; i++) {
                 const spark = document.createElement('div');
                 spark.className = 'sparkle';
                 spark.style.left = Math.random() * 100 + '%';
-                spark.style.width = (3 + Math.random() * 6) + 'px';
+                spark.style.width = (3 + Math.random() * 8) + 'px';
                 spark.style.height = spark.style.width;
-                spark.style.animationDuration = (6 + Math.random() * 12) + 's';
+                spark.style.animationDuration = (6 + Math.random() * 16) + 's';
                 spark.style.animationDelay = (Math.random() * 15) + 's';
-                spark.style.background = `radial-gradient(circle, ${['#ffd700','#ff6b9d','#ffb3d9','#a7d0ff','#ffdf8c'][Math.floor(Math.random()*5)]}, transparent)`;
+                spark.style.background = `radial-gradient(circle, ${['#ffd700','#ff6b9d','#ffb3d9','#a7d0ff','#ffdf8c','#7bed9f','#ff9ff3','#ff4757'][Math.floor(Math.random()*8)]}, transparent)`;
                 container.appendChild(spark);
             }
         })();
+
+        // ---- MOUSE SPARKLE TRAIL ----
+        let trailTimeout;
+        document.addEventListener('mousemove', function(e) {
+            if (e.target.closest('button') || e.target.closest('select') || e.target.closest('.ig-item') || e.target.closest('.image-viewer')) return;
+            clearTimeout(trailTimeout);
+            trailTimeout = setTimeout(() => {
+                const trail = document.createElement('div');
+                trail.className = 'sparkle-trail';
+                const emojis = ['❤️', '💕', '✨', '💖', '💗', '🌟', '💫'];
+                trail.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                trail.style.left = e.clientX + 'px';
+                trail.style.top = e.clientY + 'px';
+                trail.style.fontSize = (10 + Math.random() * 20) + 'px';
+                const angle = Math.random() * 2 * Math.PI;
+                const dist = 30 + Math.random() * 60;
+                trail.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+                trail.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
+                document.body.appendChild(trail);
+                setTimeout(() => { if (trail.parentNode) trail.remove(); }, 1000);
+            }, 50);
+        });
 
         // ---- COUNTDOWN TIMER ----
         function getNextAnniversary() {
@@ -1456,11 +1800,11 @@
         const viewerLabel = document.getElementById('viewerLabel');
         const viewerSub = document.getElementById('viewerSub');
         const viewerNav = document.getElementById('viewerNav');
+        const viewerCounter = document.getElementById('viewerCounter');
         const closeViewer = document.getElementById('closeViewer');
         let currentIndex = 0;
         let allItems = [];
 
-        // Collect all items with their data
         document.querySelectorAll('.ig-item').forEach(item => {
             const img = item.querySelector('img');
             const emojiEl = item.querySelector('.ig-emoji');
@@ -1478,7 +1822,8 @@
             const item = allItems[index];
             if (!item) return;
             
-            // Show/hide image vs emoji
+            viewerCounter.textContent = `${index + 1} / ${allItems.length}`;
+            
             if (item.hasImage && item.image) {
                 viewerImage.src = item.image;
                 viewerImage.classList.add('show');
@@ -1492,7 +1837,6 @@
             viewerLabel.textContent = item.label;
             viewerSub.textContent = item.sub || '💕 A beautiful memory';
             
-            // Update nav dots
             viewerNav.innerHTML = '';
             allItems.forEach((_, i) => {
                 const dot = document.createElement('span');
@@ -1513,11 +1857,9 @@
             document.body.style.overflow = '';
         }
 
-        // Click on grid items
         document.querySelectorAll('.ig-item').forEach((item, index) => {
             item.addEventListener('click', function(e) {
                 e.stopPropagation();
-                // Find the actual index in allItems
                 const label = this.dataset.label;
                 const foundIndex = allItems.findIndex(i => i.label === label);
                 if (foundIndex !== -1) {
@@ -1526,13 +1868,11 @@
             });
         });
 
-        // Close viewer
         closeViewer.addEventListener('click', closeViewerFn);
         viewer.addEventListener('click', function(e) {
             if (e.target === this) closeViewerFn();
         });
 
-        // Keyboard navigation
         document.addEventListener('keydown', function(e) {
             if (!viewer.classList.contains('active')) return;
             if (e.key === 'Escape') closeViewerFn();
@@ -1574,32 +1914,31 @@
 
         // ---- SURPRISE BUTTON ----
         document.getElementById('surpriseBtn').addEventListener('click', function(e) {
-            const colors = ['#ff6b9d', '#ffd700', '#ffb3d9', '#a7d0ff', '#ffdf8c', '#ff7eb3', '#7bed9f', '#ff9ff3'];
-            const emojis = ['❤️', '💕', '💖', '✨', '🌟', '💫', '🎉', '🎊', '💝', '💗', '🌹', '💋', '💍', '🥂', '💞', '💘', '🌸', '🌈'];
+            const colors = ['#ff6b9d', '#ffd700', '#ffb3d9', '#a7d0ff', '#ffdf8c', '#ff7eb3', '#7bed9f', '#ff9ff3', '#ff4757', '#2ed573', '#ff6348', '#70a1ff'];
+            const emojis = ['❤️', '💕', '💖', '✨', '🌟', '💫', '🎉', '🎊', '💝', '💗', '🌹', '💋', '💍', '🥂', '💞', '💘', '🌸', '🌈', '⭐', '💥', '💐'];
 
-            // Big confetti burst
-            for (let i = 0; i < 200; i++) {
+            for (let i = 0; i < 300; i++) {
                 const piece = document.createElement('div');
                 piece.className = 'confetti-piece';
-                const x = window.innerWidth / 2 + (Math.random() - 0.5) * 600;
-                const y = window.innerHeight / 2 + (Math.random() - 0.5) * 500;
+                const x = window.innerWidth / 2 + (Math.random() - 0.5) * 800;
+                const y = window.innerHeight / 2 + (Math.random() - 0.5) * 700;
                 piece.style.left = x + 'px';
                 piece.style.top = y + 'px';
                 piece.style.background = colors[Math.floor(Math.random() * colors.length)];
-                piece.style.width = (6 + Math.random() * 20) + 'px';
-                piece.style.height = (6 + Math.random() * 20) + 'px';
+                piece.style.width = (6 + Math.random() * 25) + 'px';
+                piece.style.height = (6 + Math.random() * 25) + 'px';
                 piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
                 const angle = Math.random() * 2 * Math.PI;
-                const dist = 150 + Math.random() * 700;
+                const dist = 150 + Math.random() * 900;
                 piece.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
-                piece.style.setProperty('--ty', Math.sin(angle) * dist - 500 + 'px');
-                piece.style.animationDuration = (1.2 + Math.random() * 2) + 's';
-                piece.style.animationDelay = (Math.random() * 0.6) + 's';
+                piece.style.setProperty('--ty', Math.sin(angle) * dist - 700 + 'px');
+                piece.style.animationDuration = (1.2 + Math.random() * 3) + 's';
+                piece.style.animationDelay = (Math.random() * 0.8) + 's';
 
                 if (i % 2 === 0) {
                     piece.textContent = emojis[Math.floor(Math.random() * emojis.length)];
                     piece.style.background = 'transparent';
-                    piece.style.fontSize = (18 + Math.random() * 32) + 'px';
+                    piece.style.fontSize = (18 + Math.random() * 40) + 'px';
                     piece.style.width = 'auto';
                     piece.style.height = 'auto';
                     piece.style.display = 'flex';
@@ -1610,33 +1949,32 @@
                 document.body.appendChild(piece);
                 setTimeout(() => {
                     if (piece.parentNode) piece.remove();
-                }, 4000);
+                }, 4500);
             }
 
-            // Big heart emoji floating effect
             const bigHeart = document.createElement('div');
             bigHeart.style.cssText = `
                 position: fixed;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%) scale(0);
-                font-size: 15rem;
+                font-size: 25rem;
                 z-index: 99998;
                 pointer-events: none;
-                animation: bigHeartPop 1.5s ease-out forwards;
-                filter: drop-shadow(0 0 80px rgba(255,107,157,0.5));
+                animation: bigHeartPop 2.5s ease-out forwards;
+                filter: drop-shadow(0 0 120px rgba(255,107,157,0.6));
             `;
             bigHeart.textContent = '💖';
             document.body.appendChild(bigHeart);
             
-            // Add keyframe dynamically
             const style = document.createElement('style');
             style.textContent = `
                 @keyframes bigHeartPop {
-                    0% { transform: translate(-50%, -50%) scale(0) rotate(-20deg); opacity: 0; }
-                    30% { transform: translate(-50%, -50%) scale(1.5) rotate(10deg); opacity: 1; }
-                    60% { transform: translate(-50%, -50%) scale(1) rotate(-5deg); opacity: 1; }
-                    100% { transform: translate(-50%, -50%) scale(1.2) rotate(0deg); opacity: 0; }
+                    0% { transform: translate(-50%, -50%) scale(0) rotate(-30deg); opacity: 0; }
+                    25% { transform: translate(-50%, -50%) scale(2) rotate(15deg); opacity: 1; }
+                    50% { transform: translate(-50%, -50%) scale(1.3) rotate(-8deg); opacity: 1; }
+                    75% { transform: translate(-50%, -50%) scale(1.7) rotate(5deg); opacity: 1; }
+                    100% { transform: translate(-50%, -50%) scale(2.2) rotate(0deg); opacity: 0; }
                 }
             `;
             document.head.appendChild(style);
@@ -1644,37 +1982,290 @@
             setTimeout(() => {
                 if (bigHeart.parentNode) bigHeart.remove();
                 if (style.parentNode) style.remove();
-            }, 2000);
+            }, 3000);
+
+            const loveText = document.createElement('div');
+            loveText.style.cssText = `
+                position: fixed;
+                top: 15%;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: clamp(2rem, 8vw, 5rem);
+                font-weight: 900;
+                z-index: 99998;
+                pointer-events: none;
+                animation: loveTextFloat 3.5s ease-out forwards;
+                text-shadow: 0 0 80px rgba(255,107,157,0.4);
+                letter-spacing: 4px;
+            `;
+            loveText.className = 'rainbow-text';
+            loveText.textContent = '💕 I LOVE YOU WENDY! 💕';
+            document.body.appendChild(loveText);
+            
+            const loveStyle = document.createElement('style');
+            loveStyle.textContent = `
+                @keyframes loveTextFloat {
+                    0% { opacity: 0; transform: translateX(-50%) scale(0.5) rotate(-5deg); }
+                    20% { opacity: 1; transform: translateX(-50%) scale(1.2) rotate(3deg); }
+                    40% { transform: translateX(-50%) scale(1) rotate(-2deg); }
+                    80% { opacity: 1; transform: translateX(-50%) scale(1.1) rotate(0deg); }
+                    100% { opacity: 0; transform: translateX(-50%) scale(1.3) rotate(0deg); }
+                }
+            `;
+            document.head.appendChild(loveStyle);
+            
+            setTimeout(() => {
+                if (loveText.parentNode) loveText.remove();
+                if (loveStyle.parentNode) loveStyle.remove();
+            }, 4000);
 
             const btn = e.currentTarget;
             btn.textContent = '💥 BOOM! 💥';
-            btn.style.transform = 'scale(1.1)';
+            btn.style.transform = 'scale(1.15)';
             setTimeout(() => {
                 btn.textContent = '💥 Surprise!';
                 btn.style.transform = 'scale(1)';
             }, 1500);
         });
 
-        // ---- CLICK SPARKLES ----
+        // ---- LOVE NOTE BUTTON ----
+        document.getElementById('loveNoteBtn').addEventListener('click', function(e) {
+            const notes = [
+                "💕 You are the most beautiful person I've ever met, inside and out.",
+                "🌹 Every day with you is a gift I never want to unwrap completely.",
+                "💫 You make my world brighter just by being in it.",
+                "🌸 I fall in love with you a little more every single day.",
+                "✨ You are my dream come true, Wendy.",
+                "💖 My heart beats only for you, now and forever.",
+                "🌙 Even the stars are jealous of how much you shine.",
+                "🌈 You color my world with love and happiness.",
+                "💝 You are my forever and always, my one and only.",
+                "🌟 Meeting you was fate, falling for you was destiny.",
+                "💋 Your smile is my favorite thing in the world.",
+                "🌺 You are the most amazing woman I've ever known.",
+                "💎 You are a rare treasure, my precious Wendy.",
+                "🎵 You are the music in my heart's song.",
+                "☀️ You are my sunshine on the darkest days.",
+                "🦋 You make my heart flutter like a butterfly.",
+                "💫 You are the star that guides me home.",
+                "🌹 My love for you grows stronger every day.",
+                "💕 You are my everything, my world, my love.",
+                "✨ Every moment with you is a beautiful memory."
+            ];
+            
+            const note = notes[Math.floor(Math.random() * notes.length)];
+            const noteEl = document.createElement('div');
+            noteEl.className = 'love-note';
+            noteEl.textContent = note;
+            noteEl.style.left = (Math.random() * 60 + 10) + '%';
+            noteEl.style.top = (Math.random() * 40 + 20) + '%';
+            const gradients = [
+                'linear-gradient(135deg, rgba(255,107,157,0.15), rgba(255,215,0,0.15))',
+                'linear-gradient(135deg, rgba(167,208,255,0.15), rgba(255,107,157,0.15))',
+                'linear-gradient(135deg, rgba(255,215,0,0.15), rgba(167,208,255,0.15))'
+            ];
+            noteEl.style.background = gradients[Math.floor(Math.random() * gradients.length)];
+            noteEl.style.borderColor = ['#ff6b9d', '#ffd700', '#a7d0ff'][Math.floor(Math.random() * 3)];
+            document.body.appendChild(noteEl);
+            
+            setTimeout(() => {
+                if (noteEl.parentNode) noteEl.remove();
+            }, 5000);
+        });
+
+        // ---- KISS BUTTON ----
+        document.getElementById('kissBtn').addEventListener('click', function(e) {
+            const kissEmojis = ['💋', '💏', '💕', '❤️', '💖', '💗', '💝', '💞', '💘'];
+            
+            for (let i = 0; i < 50; i++) {
+                const kiss = document.createElement('div');
+                kiss.className = 'kiss-effect';
+                kiss.textContent = kissEmojis[Math.floor(Math.random() * kissEmojis.length)];
+                kiss.style.left = (Math.random() * window.innerWidth) + 'px';
+                kiss.style.top = (Math.random() * window.innerHeight) + 'px';
+                kiss.style.fontSize = (20 + Math.random() * 60) + 'px';
+                kiss.style.animationDuration = (1 + Math.random() * 1.5) + 's';
+                document.body.appendChild(kiss);
+                setTimeout(() => { if (kiss.parentNode) kiss.remove(); }, 2000);
+            }
+
+            const bigKiss = document.createElement('div');
+            bigKiss.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 10rem;
+                z-index: 99998;
+                pointer-events: none;
+                animation: bigKissPop 2s ease-out forwards;
+                filter: drop-shadow(0 0 80px rgba(255,107,157,0.4));
+            `;
+            bigKiss.textContent = '💋';
+            document.body.appendChild(bigKiss);
+            
+            const kissStyle = document.createElement('style');
+            kissStyle.textContent = `
+                @keyframes bigKissPop {
+                    0% { transform: translate(-50%, -50%) scale(0) rotate(-20deg); opacity: 0; }
+                    30% { transform: translate(-50%, -50%) scale(1.8) rotate(10deg); opacity: 1; }
+                    60% { transform: translate(-50%, -50%) scale(1.2) rotate(-5deg); opacity: 1; }
+                    100% { transform: translate(-50%, -50%) scale(1.5) rotate(0deg); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(kissStyle);
+            
+            setTimeout(() => {
+                if (bigKiss.parentNode) bigKiss.remove();
+                if (kissStyle.parentNode) kissStyle.remove();
+            }, 2500);
+
+            const btn = e.currentTarget;
+            btn.textContent = '💋 MWAH! 💋';
+            btn.style.transform = 'scale(1.15)';
+            setTimeout(() => {
+                btn.textContent = '💋 Kiss';
+                btn.style.transform = 'scale(1)';
+            }, 1200);
+        });
+
+        // ---- NAME CLICK SURPRISE ----
+        document.getElementById('nameWendy').addEventListener('click', function() {
+            const hearts = ['❤️', '💕', '💖', '💗', '💝', '💞', '💘', '🌸', '🌹', '💐'];
+            for (let i = 0; i < 40; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'confetti-piece';
+                heart.style.left = (Math.random() * window.innerWidth) + 'px';
+                heart.style.top = (Math.random() * window.innerHeight) + 'px';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.background = 'transparent';
+                heart.style.fontSize = (20 + Math.random() * 50) + 'px';
+                heart.style.width = 'auto';
+                heart.style.height = 'auto';
+                heart.style.display = 'flex';
+                heart.style.alignItems = 'center';
+                heart.style.justifyContent = 'center';
+                const angle = Math.random() * 2 * Math.PI;
+                const dist = 100 + Math.random() * 500;
+                heart.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+                heart.style.setProperty('--ty', Math.sin(angle) * dist - 400 + 'px');
+                heart.style.animationDuration = (1.5 + Math.random() * 2.5) + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => { if (heart.parentNode) heart.remove(); }, 4000);
+            }
+
+            const text = document.createElement('div');
+            text.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(0);
+                font-size: clamp(3rem, 10vw, 6rem);
+                font-weight: 900;
+                z-index: 99998;
+                pointer-events: none;
+                animation: namePop 1.5s ease-out forwards;
+                text-shadow: 0 0 80px rgba(255,107,157,0.3);
+            `;
+            text.className = 'rainbow-text';
+            text.textContent = '💕 WENDY! 💕';
+            document.body.appendChild(text);
+            
+            const nameStyle = document.createElement('style');
+            nameStyle.textContent = `
+                @keyframes namePop {
+                    0% { transform: translate(-50%, -50%) scale(0) rotate(-10deg); opacity: 0; }
+                    40% { transform: translate(-50%, -50%) scale(1.3) rotate(5deg); opacity: 1; }
+                    70% { transform: translate(-50%, -50%) scale(1) rotate(-3deg); opacity: 1; }
+                    100% { transform: translate(-50%, -50%) scale(1.1) rotate(0deg); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(nameStyle);
+            
+            setTimeout(() => {
+                if (text.parentNode) text.remove();
+                if (nameStyle.parentNode) nameStyle.remove();
+            }, 2000);
+        });
+
+        document.getElementById('nameZshenawer').addEventListener('click', function() {
+            const hearts = ['❤️', '💕', '💖', '💗', '💝', '💞', '💘', '⭐', '✨', '💫'];
+            for (let i = 0; i < 40; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'confetti-piece';
+                heart.style.left = (Math.random() * window.innerWidth) + 'px';
+                heart.style.top = (Math.random() * window.innerHeight) + 'px';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.background = 'transparent';
+                heart.style.fontSize = (20 + Math.random() * 50) + 'px';
+                heart.style.width = 'auto';
+                heart.style.height = 'auto';
+                heart.style.display = 'flex';
+                heart.style.alignItems = 'center';
+                heart.style.justifyContent = 'center';
+                const angle = Math.random() * 2 * Math.PI;
+                const dist = 100 + Math.random() * 500;
+                heart.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+                heart.style.setProperty('--ty', Math.sin(angle) * dist - 400 + 'px');
+                heart.style.animationDuration = (1.5 + Math.random() * 2.5) + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => { if (heart.parentNode) heart.remove(); }, 4000);
+            }
+
+            const text = document.createElement('div');
+            text.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(0);
+                font-size: clamp(3rem, 10vw, 6rem);
+                font-weight: 900;
+                z-index: 99998;
+                pointer-events: none;
+                animation: namePop 1.5s ease-out forwards;
+                text-shadow: 0 0 80px rgba(167,208,255,0.3);
+                color: #a7d0ff;
+            `;
+            text.textContent = '⭐ ZSHENAWER! ⭐';
+            document.body.appendChild(text);
+            
+            const nameStyle = document.createElement('style');
+            nameStyle.textContent = `
+                @keyframes namePop {
+                    0% { transform: translate(-50%, -50%) scale(0) rotate(-10deg); opacity: 0; }
+                    40% { transform: translate(-50%, -50%) scale(1.3) rotate(5deg); opacity: 1; }
+                    70% { transform: translate(-50%, -50%) scale(1) rotate(-3deg); opacity: 1; }
+                    100% { transform: translate(-50%, -50%) scale(1.1) rotate(0deg); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(nameStyle);
+            
+            setTimeout(() => {
+                if (text.parentNode) text.remove();
+                if (nameStyle.parentNode) nameStyle.remove();
+            }, 2000);
+        });
+
+        // ---- CLICK ANYWHERE EFFECTS ----
         document.addEventListener('click', function(e) {
-            if (e.target.closest('button') || e.target.closest('select') || e.target.closest('.ig-item') || e.target.closest('.image-viewer')) return;
-            for (let i = 0; i < 15; i++) {
+            if (e.target.closest('button') || e.target.closest('select') || e.target.closest('.ig-item') || e.target.closest('.image-viewer') || e.target.closest('.love-note') || e.target.closest('.kiss-effect')) return;
+            for (let i = 0; i < 25; i++) {
                 const spark = document.createElement('div');
                 spark.className = 'confetti-piece';
-                spark.style.left = (e.clientX + (Math.random() - 0.5) * 120) + 'px';
-                spark.style.top = (e.clientY + (Math.random() - 0.5) * 120) + 'px';
-                spark.style.background = ['#ffd700', '#ff6b9d', '#ffb3d9', '#a7d0ff', '#ffdf8c'][Math.floor(Math.random() * 5)];
-                spark.style.width = (4 + Math.random() * 14) + 'px';
+                spark.style.left = (e.clientX + (Math.random() - 0.5) * 180) + 'px';
+                spark.style.top = (e.clientY + (Math.random() - 0.5) * 180) + 'px';
+                spark.style.background = ['#ffd700', '#ff6b9d', '#ffb3d9', '#a7d0ff', '#ffdf8c', '#7bed9f', '#ff9ff3', '#ff4757'][Math.floor(Math.random() * 8)];
+                spark.style.width = (4 + Math.random() * 18) + 'px';
                 spark.style.height = spark.style.width;
                 spark.style.borderRadius = '50%';
-                spark.style.setProperty('--tx', (Math.random() - 0.5) * 280 + 'px');
-                spark.style.setProperty('--ty', (Math.random() - 0.5) * 280 - 180 + 'px');
-                spark.style.animationDuration = (0.8 + Math.random() * 1.4) + 's';
-                const emojis = ['❤️', '💕', '✨', '💖', '💗', '🌟', '💫'];
-                if (i % 2 === 0) {
+                spark.style.setProperty('--tx', (Math.random() - 0.5) * 350 + 'px');
+                spark.style.setProperty('--ty', (Math.random() - 0.5) * 350 - 200 + 'px');
+                spark.style.animationDuration = (0.8 + Math.random() * 1.8) + 's';
+                const emojis = ['❤️', '💕', '✨', '💖', '💗', '🌟', '💫', '💞', '💘', '🌸'];
+                if (i % 3 === 0) {
                     spark.textContent = emojis[Math.floor(Math.random() * emojis.length)];
                     spark.style.background = 'transparent';
-                    spark.style.fontSize = (14 + Math.random() * 20) + 'px';
+                    spark.style.fontSize = (14 + Math.random() * 24) + 'px';
                     spark.style.width = 'auto';
                     spark.style.height = 'auto';
                     spark.style.display = 'flex';
@@ -1682,8 +2273,68 @@
                     spark.style.justifyContent = 'center';
                 }
                 document.body.appendChild(spark);
-                setTimeout(() => { if (spark.parentNode) spark.remove(); }, 2600);
+                setTimeout(() => { if (spark.parentNode) spark.remove(); }, 3000);
             }
+        });
+
+        // ---- DOUBLE CLICK SECRET ----
+        document.addEventListener('dblclick', function(e) {
+            if (e.target.closest('button') || e.target.closest('select') || e.target.closest('.ig-item') || e.target.closest('.image-viewer')) return;
+            
+            for (let i = 0; i < 80; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'confetti-piece';
+                heart.style.left = (e.clientX + (Math.random() - 0.5) * 400) + 'px';
+                heart.style.top = (e.clientY + (Math.random() - 0.5) * 400) + 'px';
+                heart.textContent = ['❤️', '💕', '💖', '💗', '💝', '💞', '💘', '💋'][Math.floor(Math.random() * 8)];
+                heart.style.background = 'transparent';
+                heart.style.fontSize = (20 + Math.random() * 60) + 'px';
+                heart.style.width = 'auto';
+                heart.style.height = 'auto';
+                heart.style.display = 'flex';
+                heart.style.alignItems = 'center';
+                heart.style.justifyContent = 'center';
+                const angle = Math.random() * 2 * Math.PI;
+                const dist = 100 + Math.random() * 600;
+                heart.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+                heart.style.setProperty('--ty', Math.sin(angle) * dist - 500 + 'px');
+                heart.style.animationDuration = (1.5 + Math.random() * 2.5) + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => { if (heart.parentNode) heart.remove(); }, 4000);
+            }
+            
+            const msg = document.createElement('div');
+            msg.style.cssText = `
+                position: fixed;
+                top: 20%;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: clamp(2rem, 6vw, 4rem);
+                font-weight: 900;
+                z-index: 99998;
+                pointer-events: none;
+                animation: msgFloat 2.5s ease-out forwards;
+                text-shadow: 0 0 60px rgba(255,107,157,0.3);
+            `;
+            msg.className = 'rainbow-text';
+            msg.textContent = '💕 FOREVER & ALWAYS 💕';
+            document.body.appendChild(msg);
+            
+            const msgStyle = document.createElement('style');
+            msgStyle.textContent = `
+                @keyframes msgFloat {
+                    0% { opacity: 0; transform: translateX(-50%) translateY(50px) scale(0.5); }
+                    30% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1.2); }
+                    70% { opacity: 1; transform: translateX(-50%) translateY(-10px) scale(1); }
+                    100% { opacity: 0; transform: translateX(-50%) translateY(-60px) scale(1.1); }
+                }
+            `;
+            document.head.appendChild(msgStyle);
+            
+            setTimeout(() => {
+                if (msg.parentNode) msg.remove();
+                if (msgStyle.parentNode) msgStyle.remove();
+            }, 3000);
         });
 
         console.log('💞 Wendy & Zshenawer — July 17, 2025 forever! 💞');
@@ -1692,8 +2343,12 @@
         console.log('🍽️ First date: Restaurant after class');
         console.log('🎵 Music loaded from uploads folder!');
         console.log('💥 Click any photo to view in fullscreen!');
-        console.log('📁 Place your music files in the "uploads" folder:');
-        console.log('   - love.mp3, upbeat.mp3, chill.mp3, classic.mp3');
+        console.log('💌 Click "Love Note" for random sweet messages!');
+        console.log('💋 Click "Kiss" for a shower of kisses!');
+        console.log('🎉 Click "Surprise!" for an epic celebration!');
+        console.log('👆 Click names for a special surprise!');
+        console.log('🖱️ Move mouse for sparkle trail!');
+        console.log('🔄 Double click anywhere for a BIG surprise!');
     </script>
 
 </body>
